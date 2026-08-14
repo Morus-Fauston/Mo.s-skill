@@ -1,0 +1,52 @@
+{
+  "skill_name": "changelog-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "这次 v0.4.0 做完了。请从上个版本以来的 Git 改动整理 CHANGELOG.md 和 CHANGELOG.txt 草稿，给出版本建议，但先不要写文件、提交或推送。",
+      "expected_output": "读取 Git 历史和实际 diff 后给出双更新日志草稿与版本建议，并停在一次性确认环节。",
+      "files": [],
+      "expectations": [
+        "基线优先使用最新版本标签，缺失时回退到最后一次更新日志提交。",
+        "草稿同时包含详细 Markdown 与压缩纯文本版本，内容与实际 diff 一致。",
+        "默认使用当前 Agent 的原生用户选择器窗口，一次收集版本号、内容修改、Git 动作和暂存范围；没有该窗口时才退回对话确认。",
+        "在用户确认前不写文件、不暂存、不提交也不推送。",
+        "版本建议说明是 PATCH、MINOR 或 MAJOR 的理由，使用标准 SemVer；已发布版本的修复建议下一个 PATCH，而不是自定义 revised 后缀。"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "更新日志草稿我确认了。提交 CHANGELOG.md、CHANGELOG.txt 和 app/export.py，别推送。工作区里还有我未完成的 Docs/notes.md 和临时截图，绝对不要带进去。",
+      "expected_output": "仅暂存用户明确列出的三份文件并创建提交，不推送，也不使用全工作区暂存命令。",
+      "files": [],
+      "expectations": [
+        "提交前展示或复核拟暂存的三个明确路径。",
+        "不使用 git add -A、git add . 或其他全工作区暂存命令。",
+        "Docs/notes.md 和临时截图不被暂存或提交。",
+        "不会执行 git push。"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "把这段函数重写过程总结一下，方便我在代码评审里说明。不要写版本记录，也不要碰 Git。",
+      "expected_output": "识别为一般代码总结，不触发 changelog-writer。",
+      "files": [],
+      "expectations": [
+        "不创建或提议 CHANGELOG.md 和 CHANGELOG.txt 条目。",
+        "不建议版本号，不执行 Git 命令。",
+        "将任务作为普通代码说明或评审说明处理。"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "帮我写 v0.4.1 的更新日志；但查完发现从上一个版本起没有任何提交或未提交改动。",
+      "expected_output": "说明没有可记录的变化，不创建空版本条目，也不提交或推送。",
+      "files": [],
+      "expectations": [
+        "明确说明基线后没有变化。",
+        "不创建空的 CHANGELOG.md 或 CHANGELOG.txt 条目。",
+        "不暂存、提交或推送。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+# 安装与更新
+
+## 先理解发布方式
+
+Mo.s-Skill 发布的是标准 Skill 目录，而不是一个绑定某个 Agent 的安装器。`skills/<skill-name>/SKILL.md` 是每个 Skill 的入口。
+
+未特别指定时，安装的是**使用版**：复制 `SKILL.md`，再复制该 Skill 运行时需要的 `references/`、脚本或资源；不复制 `evals/`。`evals/` 是维护和回归评测资料，Agent 正常运行不会读取它。需要修改、评测或发布 Skill 时，才安装包含 `evals/` 的**维护版**完整目录。
+
+当前八个自有 Skill 的使用版规则如下：
+
+| Skill | 使用版文件 |
+| --- | --- |
+| `changelog-writer` | `SKILL.md`、`references/changelog-format.md` |
+| 其余 7 个自有 Skill | 仅 `SKILL.md` |
+
+不同 Agent 对 Skill 的发现位置、项目级覆盖规则、插件市场和更新机制并不相同。一个脚本若擅自把文件复制到几个猜测的目录，只能覆盖少数本机配置，也会绕过 Agent 自己的更新和卸载机制。因此请按你使用的 Agent 选择原生方式。
+
+## 方式一：复制到项目
+
+这是最可控的方式。克隆或下载本仓库后，默认只复制需要的使用版文件到你的 Agent 在项目内约定的 Skills 位置。例如：
+
+```text
+your-project/
+  .agents/
+    skills/
+      evidence-based-validation/
+        SKILL.md
+```
+
+项目目录的确切名称由 Agent 决定，常见约定包括 `.agents/skills/`、`.claude/skills/`、`.copilot/skills/` 或工具自己的插件目录。复制后，在该项目发出与 Skill 描述匹配的请求，确认 Agent 能识别它，再安装下一个。只有项目要自行修改或评测该 Skill 时，才复制完整目录和 `evals/`。
+
+优点：Skill 与项目一起审查、版本固定且便于定制。缺点：每个项目都要单独放置一份。
+
+## 方式二：复制到个人目录
+
+如果某个 Agent 支持用户级自定义 Skills，可以将该 Skill 的使用版文件复制到它文档规定的用户目录。只复制 `SKILL.md` 可能遗漏运行时引用文件；但不需要复制 `evals/`。只有维护者需要修改或评测时，才将 `skills/<skill-name>/` 完整复制到用户目录。
+
+Copilot、Claude Code 和 Codex 的当前版本都支持某种用户级或项目级扩展机制，但目录和优先级可能变化。请以各自的官方文档为准，不要把其他 Agent 的目录约定套用过来。
+
+优点：一次安装，可在多个项目使用，且不会把维护评测资料装进日常 Agent 目录。缺点：更新由你负责，也可能和项目局部定制发生覆盖关系。
+
+## 方式三：使用 Agent 的原生安装入口
+
+有些 Agent 支持从 Git 仓库、插件市场或注册表安装扩展。遇到这种情况，优先使用原生入口：
+
+- 它能表达 Agent 自己的权限模型和安装范围。
+- 它通常能列出、更新和卸载已安装内容。
+- 它不要求本仓库维护所有 Agent 的私有目录规则。
+
+Mo.s-Skill 当前没有为任何单一市场发布专用插件包。原因不是市场方式不好，而是不同市场的元数据、审查要求和行为模型不同。仓库先保持内容层可移植；未来如加入某个市场，会作为明确标注、独立验证的适配层，而不会改变 `skills/` 的规范内容。
+
+## 选择安装范围
+
+三档精选的完整内容见 [curated-tiers.md](curated-tiers.md)：`own` 是本仓库八个原创 Skill，`recommended` 在此基础上加入日常工程上游补充，`all` 是完整的上游来源索引。三档是选择范围，不是统一安装命令。
+
+注意搭配边界：八个 Mo Skill 可以独立复制。需要收敛尚未定案的方案和术语时，推荐使用 Matt Pocock Skills 的 `grill-with-docs`；需要执行 `research-brief` 已准备好的实际调研时，推荐使用 `research`。这两项不是硬依赖：项目可以使用职责等价、并在项目规则中明确的替代流程。没有这类既有流程时，建议采用 `recommended`。
+
+建议先从一个实际问题开始，而不是一次装完：
+
+| 目标 | 建议先安装 |
+| --- | --- |
+| 想让每次改动有更可信的验证证据 | `evidence-based-validation` |
+| 文档多、多人或多 Agent 协作 | `decision-to-spec`、`docs-integrity-audit` |
+| 经常在版本末尾不确定是否完成 | `phase-acceptance`、`changelog-writer` |
+| 交互方案需要先体验再决定 | `interaction-prototype-to-spec` |
+| 维护或组合多个自定义 Skill | `skill-workflow-visualizer` |
+
+需求与边界见 [skill-selection.md](skill-selection.md)。
+
+## 更新、定制与移除
+
+1. **更新前先查看差异**：自有 Skill 的行为依赖触发条件、边界和人工确认点，不能只按文件名判断更新是否安全。
+2. **项目有定制时优先保留 fork**：把本仓库更新与项目的本地约束合并，而不是无条件覆盖。
+3. **原生市场安装的上游 Skill 用其原生命令更新**：不要由 Mo.s-Skill 代替第三方项目管理版本。
+4. **移除时删整个 Skill 目录或用原生卸载命令**：不要留下同名的半残目录，以免 Agent 读取到不完整内容。
+
+## 验证安装结果
+
+安装后用一个真实、低风险的请求验证，而不是只检查目录存在。例如安装 `evidence-based-validation` 后，可以让 Agent 为一项已完成的小改动写最小验证卡。检查它是否：
+
+- 先锁定一个明确行为，而不是泛泛列测试；
+- 区分已执行证据、待人工步骤和无法证明的边界；
+- 没有把离线结果写成真实环境通过。
+
+若 Agent 没有加载 Skill，先检查该 Agent 官方文档中的目录、作用域和是否需要重启或重新打开工作区。

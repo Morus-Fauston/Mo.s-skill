@@ -1,0 +1,23 @@
+{
+  "skill_name": "skill-workflow-visualizer",
+  "evals": [
+    {
+      "id": "updated-skill-workflow",
+      "prompt": "我更新了 grilling、think 和 to-spec，帮我检查现有 Skill 工作流图是否过期并重画。",
+      "expected_output": "读取当前 Skill 正文，列出已证实的变化，更新或交付含人工关口和非自动转交标注的 Mermaid 工作流。",
+      "files": []
+    },
+    {
+      "id": "cross-agent-duplicates",
+      "prompt": "Copilot 和 Claude 都有 research、handoff 和 code-review，帮我画一张 Skill 协作图并看看要不要去重。",
+      "expected_output": "先区分不同 Agent 的同步副本与同一 Agent 内的职责重叠，不因跨 Agent 同名而建议删除，并交付协作图。",
+      "files": []
+    },
+    {
+      "id": "approval-is-not-implementation",
+      "prompt": "把 grill、think、research、decision-to-spec 和 implement 的流程画出来。",
+      "expected_output": "明确讨论完成、计划批准、研究采纳、写正式文档和授权实现是不同关口，不将它们画成无条件自动链路。",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "description": "Complete curated upstream Skill source index. Each item remains subject to its official source, license, and Agent-specific installation method.",
+  "packages": [
+    {
+      "source": "https://github.com/mattpocock/skills",
+      "skills": ["ask-matt", "check", "code-review", "codebase-design", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "health", "hunt", "implement", "improve-codebase-architecture", "learn", "prototype", "read", "research", "setup-matt-pocock-skills", "tdd", "teach", "think", "to-spec", "to-tickets", "triage", "ui", "wayfinder", "webapp-testing", "write", "writing-great-skills"]
+    },
+    {
+      "source": "https://github.com/anthropics/skills",
+      "skills": ["algorithmic-art", "brand-guidelines", "canvas-design", "docx", "frontend-design", "mcp-builder", "pdf", "pptx", "skill-creator", "theme-factory", "web-artifacts-builder", "xlsx"]
+    },
+    {
+      "source": "https://github.com/wshobson/agents",
+      "skills": ["diagnosing-bugs", "doc-coauthoring", "git-guardrails-claude-code", "resolving-merge-conflicts"]
+    },
+    {
+      "source": "https://github.com/hugohe3/ppt-master",
+      "skills": ["ppt-master"],
+      "optional": true,
+      "note": "PPT Master may require separate Python runtime dependencies. Read its upstream documentation after installing."
+    }
+  ]
+}

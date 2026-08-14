@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "description": "Recommended upstream Skill source index for common planning, implementation, validation, research, and UI workflows. Install each source through its own official Agent-specific channel.",
+  "packages": [
+    {
+      "source": "https://github.com/mattpocock/skills",
+      "skills": ["think", "hunt", "check", "research", "ui", "write", "read", "tdd", "code-review", "grilling", "grill-with-docs", "handoff", "prototype", "webapp-testing"]
+    }
+  ]
+}
