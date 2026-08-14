@@ -1,10 +1,20 @@
 {
   "schemaVersion": 1,
-  "description": "Recommended upstream Skill source index for common planning, implementation, validation, research, and UI workflows. Install each source through its own official Agent-specific channel.",
+  "description": "Recommended upstream Skill source index for the author's daily planning, implementation, validation, research, documentation, UI, and Git workflows. Install each source through its own official Agent-specific channel.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
-      "skills": ["think", "hunt", "check", "research", "ui", "write", "read", "tdd", "code-review", "grilling", "grill-with-docs", "handoff", "prototype", "webapp-testing"]
+      "skills": ["ask-matt", "check", "code-review", "codebase-design", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "health", "hunt", "implement", "improve-codebase-architecture", "learn", "prototype", "read", "research", "tdd", "teach", "think", "to-spec", "to-tickets", "triage", "ui", "wayfinder", "webapp-testing", "write"]
+    },
+    {
+      "source": "https://github.com/wshobson/agents",
+      "skills": ["doc-coauthoring", "git-guardrails-claude-code", "resolving-merge-conflicts"]
+    },
+    {
+      "source": "https://github.com/yetone/kill-ai-slop",
+      "skills": ["kill-ai-slop"],
+      "license": "Apache-2.0",
+      "install_path": "skill/"
     }
   ]
 }

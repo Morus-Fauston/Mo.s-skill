@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "Complete curated upstream Skill source index. Each item remains subject to its official source, license, and Agent-specific installation method.",
+  "description": "Complete upstream index for the author's 2026-08-14 curated baseline: 47 upstream Skills plus the repository's 8 owned Skills. It follows the filtered Copilot user-level loadable set and adds the separately installed ppt-master; it does not mechanically merge every shared-Agent directory.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
@@ -15,10 +15,31 @@
       "skills": ["diagnosing-bugs", "doc-coauthoring", "git-guardrails-claude-code", "resolving-merge-conflicts"]
     },
     {
+      "source": "https://github.com/yetone/kill-ai-slop",
+      "skills": ["kill-ai-slop"],
+      "license": "Apache-2.0",
+      "install_path": "skill/"
+    },
+    {
       "source": "https://github.com/hugohe3/ppt-master",
       "skills": ["ppt-master"],
       "optional": true,
-      "note": "PPT Master may require separate Python runtime dependencies. Read its upstream documentation after installing."
+      "note": "Installed in the author's shared Agent Skill directory. PPT Master may require separate Python runtime dependencies. Read its upstream documentation after installing."
+    }
+  ],
+  "excluded_from_installed_baseline": [
+    {
+      "name": "decision-to-spec-workspace",
+      "reason": "Local workspace helper directory without SKILL.md; it is not a loadable Skill."
+    },
+    {
+      "name": "phase-acceptance-workspace",
+      "reason": "Local workspace helper directory without SKILL.md; it is not a loadable Skill."
+    },
+    {
+      "name": "template-skill",
+      "source": "https://github.com/anthropics/skills",
+      "reason": "Upstream placeholder template whose body still says 'Replace with description'; excluded from the author's usable Skill set."
     }
   ]
 }
