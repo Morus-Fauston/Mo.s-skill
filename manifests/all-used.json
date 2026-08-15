@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "Complete upstream index for the author's 2026-08-14 curated baseline: 47 upstream Skills plus the repository's 8 owned Skills. It follows the filtered Copilot user-level loadable set and adds the separately installed ppt-master; it does not mechanically merge every shared-Agent directory.",
+  "description": "Complete upstream index: 47 upstream Skills plus 9 owned Skills. It records a curated, reproducible selection rather than a mechanical merge of every available Skill directory.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
@@ -24,22 +24,22 @@
       "source": "https://github.com/hugohe3/ppt-master",
       "skills": ["ppt-master"],
       "optional": true,
-      "note": "Installed in the author's shared Agent Skill directory. PPT Master may require separate Python runtime dependencies. Read its upstream documentation after installing."
+      "note": "PPT Master may require separate Python runtime dependencies. Read its upstream documentation after installing."
     }
   ],
-  "excluded_from_installed_baseline": [
+  "excluded_from_selection": [
     {
       "name": "decision-to-spec-workspace",
-      "reason": "Local workspace helper directory without SKILL.md; it is not a loadable Skill."
+      "reason": "Workspace helper directory without SKILL.md; it is not a loadable Skill."
     },
     {
       "name": "phase-acceptance-workspace",
-      "reason": "Local workspace helper directory without SKILL.md; it is not a loadable Skill."
+      "reason": "Workspace helper directory without SKILL.md; it is not a loadable Skill."
     },
     {
       "name": "template-skill",
       "source": "https://github.com/anthropics/skills",
-      "reason": "Upstream placeholder template whose body still says 'Replace with description'; excluded from the author's usable Skill set."
+      "reason": "Upstream placeholder template whose body still says 'Replace with description'; it is not part of this curated selection."
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Mo.s-Skill Repository Instructions
 
-- Keep the eight locally maintained Skills under `skills/` independently distributable and MIT-licensed.
+- Keep all locally maintained Skills under `skills/` independently distributable and MIT-licensed.
 - Do not vendor third-party Skill bodies. Add or update them through the JSON manifests and their official sources.
 - Preserve human confirmation gates in all Skills and maintenance scripts.
 - Validate PowerShell changes with `scripts/validate.ps1`.

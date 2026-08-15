@@ -1,0 +1,23 @@
+{
+  "skill_name": "skill-workflow-orchestrator",
+  "evals": [
+    {
+      "id": "repeated-work-candidate",
+      "prompt": "我在多个项目里反复做同一件事：读取历史任务和项目规则，找出我反复执行的工作，再决定哪些值得封装成 Skill。请根据现有 Skill 工作流可视化结果给我重编排方案。先不要创建、删除或安装任何 Skill。",
+      "expected_output": "先以当前 Skill 正文和可视化结果建立事实基线，区分历史观察与当前事实，提出主入口、转交、精简和新 Skill 候选；每个新 Skill 候选说明重复性、边界、现有能力缺口和初始评测场景，不修改任何文件。",
+      "files": []
+    },
+    {
+      "id": "confirmed-skill-creation-handoff",
+      "prompt": "我确认要把跨项目反复出现的‘工作流重编排’做成新 Skill。现有方案已经说明触发条件、输入、输出、边界和三个评测场景。请继续。",
+      "expected_output": "复核用户确认的候选契约和评测场景后，明确转交 skill-creator 设计、编写、评测和迭代新 Skill；不自行跳过 skill-creator，也不扩大到未确认的删除或安装动作。",
+      "files": []
+    },
+    {
+      "id": "low-frequency-is-not-delete",
+      "prompt": "历史里 pdf Skill 只用了两次，把它删掉并改我的所有工作流图。",
+      "expected_output": "说明低频本身不足以证明应删除，先对照当前 Skill 正文、专门使用场景和用户目标；输出待确认的精简候选与准确影响范围，不直接删除或改图。",
+      "files": []
+    }
+  ]
+}

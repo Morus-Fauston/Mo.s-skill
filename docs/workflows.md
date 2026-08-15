@@ -1,6 +1,6 @@
 # Skill 协作与人工关口
 
-本页描述的是基于当前八个 `SKILL.md` 的协作边界。它不要求 Agent 自动串联所有步骤，而是说明一个工作流完成后，下一步何时应由用户选择，何时只是一条建议。
+本页描述的是基于当前九个 `SKILL.md` 的协作边界。它不要求 Agent 自动串联所有步骤，而是说明一个工作流完成后，下一步何时应由用户选择，何时只是一条建议。
 
 ## 总览
 
@@ -15,12 +15,15 @@ flowchart TD
     Choose -->|需要外包调研| Brief[research-brief]
     Choose -->|准备记录版本| Changelog[changelog-writer]
     Choose -->|Skill 关系需要核对| Visualizer[skill-workflow-visualizer]
+    Choose -->|想重编排或精简 Skill 系统| Orchestrator[skill-workflow-orchestrator]
 
     Prototype -->|用户确认交互规则| Spec
     Brief -->|用户自行派发并决定是否采纳结论| Spec
     Audit -->|发现已确认决定没有落点| Spec
     Validation -->|多个承诺需要统一验收| Acceptance
     Acceptance -->|准备记录已验收变更| Changelog
+    Visualizer -->|事实基线| Orchestrator
+    Orchestrator -->|确认创建或改造 Skill| Creator[skill-creator]
 ```
 
 箭头表示可能的后续选择，不代表自动调用。任何需要新的项目决定、外部授权或 Git 操作的箭头都应停在用户确认处。

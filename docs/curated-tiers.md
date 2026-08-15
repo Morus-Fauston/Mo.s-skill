@@ -4,9 +4,9 @@
 
 | 档位 | 包含什么 | 适合谁 | 安装责任 |
 | --- | --- | --- | --- |
-| `own` | Mo.s-Skill 自有的 8 个原创 Skill | 只需要自有内容的局部工作流，或已有等价的方案收敛与实际调研能力 | 未指定时从本仓库 `skills/` 复制使用版文件；维护时才复制完整目录 |
+| `own` | Mo.s-Skill 自有的 9 个原创 Skill | 只需要自有内容的局部工作流，或已有等价的方案收敛与实际调研能力 | 未指定时从本仓库 `skills/` 复制使用版文件；维护时才复制完整目录 |
 | `recommended` | `own` 加 31 个日常工程上游 Skill | 想直接采用作者推荐的 Mo 工作流组合，并补齐通用工程能力 | 自有 Skill 从本仓库复制；上游 Skill 从官方渠道单独安装 |
-| `all` | `own` 加 47 个上游 Skill，共 55 个当前筛选后的可用 Skill | 想与作者当前筛选后的可用集合对齐 | 按每个上游项目和 Agent 的官方方式逐项安装 |
+| `all` | `own` 加 47 个上游 Skill，共 56 个当前筛选后的可用 Skill | 想与作者当前筛选后的可用集合对齐 | 按每个上游项目和 Agent 的官方方式逐项安装 |
 
 ## `own`：Mo.s-Skill 核心集
 
@@ -22,6 +22,7 @@
 | `phase-acceptance` | 按阶段、版本或里程碑执行验收。 |
 | `research-brief` | 为独立 Agent 编写范围与证据标准明确的调研任务书。 |
 | `skill-workflow-visualizer` | 基于真实 Skill 正文核对触发关系并绘制工作流。 |
+| `skill-workflow-orchestrator` | 根据事实基线提出工作流重编排、精简与新 Skill 候选。 |
 
 ### `own` 的推荐搭配
 
@@ -54,7 +55,7 @@
 
 ## `all`：完整精选来源索引
 
-此档包含 `own`，并扩展到 [manifests/all-used.json](../manifests/all-used.json) 中记录的 47 个上游 Skill。基线是作者在 2026-08-14 已筛选的 Copilot 用户级可加载集合，再加已安装在共享 Agent Skill 目录中的 `ppt-master`：8 个自有 Skill 加 47 个上游 Skill，共 55 个。它不是扫描所有目录后得到的机械并集，已删除或占位的低价值 Skill 不会因为仍留在其他目录而重新进入清单。
+此档包含 `own`，并扩展到 [manifests/all-used.json](../manifests/all-used.json) 中记录的 47 个上游 Skill：9 个自有 Skill 加 47 个上游 Skill，共 56 个。它是一份有意筛选的可复现来源索引，不是扫描所有目录后得到的机械并集；工作区辅助目录和上游占位模板不计入清单。
 
 | 来源 | 覆盖方向 | 注意事项 |
 | --- | --- | --- |
@@ -62,7 +63,7 @@
 | [Anthropic Skills](https://github.com/anthropics/skills) | 文档、表格、PPT、设计、创意与 MCP 示例 | 各目录的许可证并不完全相同，文档类内容可能是 source-available。 |
 | [Agentic Plugin Marketplace](https://github.com/wshobson/agents) | 疑难诊断、长文协作、Git 防护与冲突解决 | 各 Agent 的原生安装入口不同，应按其 harness 文档操作。 |
 | [Kill AI Slop](https://github.com/yetone/kill-ai-slop) | Web 项目的视觉与文案默认模式扫描、审阅和小范围修正 | Apache-2.0；安装完整 `skill/` 目录，包含扫描脚本和参考资料。 |
-| [PPT Master](https://github.com/hugohe3/ppt-master) | 原生可编辑 PowerPoint 工作流 | 已安装在作者的共享 Agent Skill 目录；部分能力需要 Python 运行时依赖。 |
+| [PPT Master](https://github.com/hugohe3/ppt-master) | 原生可编辑 PowerPoint 工作流 | 部分能力需要 Python 运行时依赖。 |
 
 ### `all` 的完整上游清单
 
@@ -74,13 +75,13 @@
 | Kill AI Slop | `kill-ai-slop` |
 | PPT Master | `ppt-master` |
 
-以下目录或模板被明确排除，不计入 55 个可加载 Skill：
+以下目录或模板被明确排除，不计入 56 个可加载 Skill：
 
 | 名称 | 排除原因 |
 | --- | --- |
-| `decision-to-spec-workspace` | 本机工作区辅助目录，不含 `SKILL.md`，不是独立可加载 Skill。 |
-| `phase-acceptance-workspace` | 本机工作区辅助目录，不含 `SKILL.md`，不是独立可加载 Skill。 |
-| `template-skill` | 上游占位模板，正文仍是“Replace with description...”，不属于作者保留的可用 Skill。 |
+| `decision-to-spec-workspace` | 工作区辅助目录，不含 `SKILL.md`，不是独立可加载 Skill。 |
+| `phase-acceptance-workspace` | 工作区辅助目录，不含 `SKILL.md`，不是独立可加载 Skill。 |
+| `template-skill` | 上游占位模板，正文仍是“Replace with description...”，不属于当前精选。 |
 
 `all` 不是“建议所有人安装全部”，而是“与作者当前筛选后的可用集合对齐”。安装前仍应逐项检查：是否已被当前 Agent 内其他 Skill 覆盖、是否需要额外运行时、是否符合项目的权限和文档规则。
 

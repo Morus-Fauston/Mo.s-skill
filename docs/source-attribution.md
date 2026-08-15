@@ -2,7 +2,7 @@
 
 ## Mo.s-Skill 自有内容
 
-`skills/` 中的八个目录由本仓库维护，并以 [MIT License](../LICENSE) 发布。它们是本仓库的发布主体，也是作者工作流设计哲学的具体实现。它们可独立复制，不依赖本仓库的安装脚本或某个专用插件系统；部分场景推荐转交给上游 Skill，推荐搭配见 [curated-tiers.md](curated-tiers.md)。
+`skills/` 中的九个目录由本仓库维护，并以 [MIT License](../LICENSE) 发布。它们是本仓库的发布主体，也是作者工作流设计哲学的具体实现。它们可独立复制，不依赖本仓库的安装脚本或某个专用插件系统；部分场景推荐转交给上游 Skill，推荐搭配见 [curated-tiers.md](curated-tiers.md)。
 
 ## 上游内容不在本仓库分发
 
@@ -14,7 +14,7 @@
 | [Anthropic Skills](https://github.com/anthropics/skills) | 文档、表格、演示文稿、设计和技术示例 | Claude Code 可使用其官方市场；注意其中内容的许可并不完全相同，尤其文档类内容可能是 source-available。 |
 | [Agentic Plugin Marketplace](https://github.com/wshobson/agents) | 面向 Claude Code、Codex、Cursor、OpenCode、Gemini CLI 与 Copilot 的原生适配参考 | 使用其对应 Agent 的官方市场或生成流程；以它的多 harness 文档为准。 |
 | [Kill AI Slop](https://github.com/yetone/kill-ai-slop) | Web 项目的视觉与文案默认模式扫描、审阅和小范围修正 | Apache-2.0；按其官方说明安装完整 `skill/` 目录。 |
-| [PPT Master](https://github.com/hugohe3/ppt-master) | 原生可编辑 PowerPoint 工作流 | 已安装在作者的共享 Agent Skill 目录；按其官方说明处理 Python 运行时依赖。 |
+| [PPT Master](https://github.com/hugohe3/ppt-master) | 原生可编辑 PowerPoint 工作流 | 按其官方说明处理 Python 运行时依赖。 |
 
 ## 维护上游索引
 

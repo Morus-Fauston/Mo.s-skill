@@ -18,6 +18,12 @@
       "prompt": "把 grill、think、research、decision-to-spec 和 implement 的流程画出来。",
       "expected_output": "明确讨论完成、计划批准、研究采纳、写正式文档和授权实现是不同关口，不将它们画成无条件自动链路。",
       "files": []
+    },
+    {
+      "id": "cross-project-history-optimization",
+      "prompt": "根据我跨项目的对话历史，找出我常用的 Skill 和常见转交路径，帮我优化个人工作流。",
+      "expected_output": "仅在用户明确请求且历史工具可用时分析最小聚合使用模式；将历史观察与当前 SKILL.md 事实分开，输出使用、转交和重复工作等事实信号；需要重编排或创建新 Skill 时，明确转交 skill-workflow-orchestrator。",
+      "files": []
     }
   ]
 }

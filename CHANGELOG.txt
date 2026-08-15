@@ -1,3 +1,11 @@
+v0.3.0 (2026-08-15 16:27)
+  新增: 发布 skill-workflow-orchestrator，基于可视化事实提出主入口、转交、精简与新 Skill 候选
+  架构改进: visualizer 只负责事实与历史聚合信号 / orchestrator 负责重编排方案 / 确认创建或改造后转 skill-creator
+  调整: 安装范围统一为 own=9、recommended=40、all=56 / all 改为可复现精选来源索引 / 移除作者机器状态描述
+  技术: validate.ps1 从实际目录和 manifest 计算并报告三档数量 / 仓库指令不再写死本地 Skill 数量
+
+====
+
 v0.2.0 (2026-08-14 23:21)
   新增: 发布工作流设计哲学文档 / all 补齐 55 个筛选后的可用 Skill 完整清单
   调整: 安装入口改为先选 own、recommended、all / recommended 扩展为 39 个日常工程 Skill

@@ -6,12 +6,12 @@ Mo.s-Skill 发布的是标准 Skill 目录，而不是一个绑定某个 Agent �
 
 未特别指定时，安装的是**使用版**：复制 `SKILL.md`，再复制该 Skill 运行时需要的 `references/`、脚本或资源；不复制 `evals/`。`evals/` 是维护和回归评测资料，Agent 正常运行不会读取它。需要修改、评测或发布 Skill 时，才安装包含 `evals/` 的**维护版**完整目录。
 
-当前八个自有 Skill 的使用版规则如下：
+当前九个自有 Skill 的使用版规则如下：
 
 | Skill | 使用版文件 |
 | --- | --- |
 | `changelog-writer` | `SKILL.md`、`references/changelog-format.md` |
-| 其余 7 个自有 Skill | 仅 `SKILL.md` |
+| 其余 8 个自有 Skill | 仅 `SKILL.md` |
 
 不同 Agent 对 Skill 的发现位置、项目级覆盖规则、插件市场和更新机制并不相同。一个脚本若擅自把文件复制到几个猜测的目录，只能覆盖少数本机配置，也会绕过 Agent 自己的更新和卸载机制。因此请按你使用的 Agent 选择原生方式。
 
@@ -55,13 +55,13 @@ Mo.s-Skill 当前没有为任何单一市场发布专用插件包。原因不是
 
 | 档位 | 可加载 Skill 数量 | 适用目标 |
 | --- | ---: | --- |
-| `own` | 8 | 只使用本仓库自有 Skill，或已有等价上游工作流。 |
-| `recommended` | 39 | 采用作者日常推荐的完整工程组合。 |
-| `all` | 55 | 复现作者当前筛选后的可用 Skill 集合。 |
+| `own` | 9 | 只使用本仓库自有 Skill，或已有等价上游工作流。 |
+| `recommended` | 40 | 采用作者日常推荐的完整工程组合。 |
+| `all` | 56 | 复现作者当前筛选后的可用 Skill 集合。 |
 
 三档的逐项清单、来源和排除项见 [curated-tiers.md](curated-tiers.md)。三档是选择范围，不是统一安装命令；上游 Skill 必须由其官方渠道安装。
 
-注意搭配边界：八个 Mo Skill 可以独立复制。需要收敛尚未定案的方案和术语时，推荐使用 Matt Pocock Skills 的 `grill-with-docs`；需要执行 `research-brief` 已准备好的实际调研时，推荐使用 `research`。这两项不是硬依赖：项目可以使用职责等价、并在项目规则中明确的替代流程。没有这类既有流程时，建议采用 `recommended`；需要与作者当前筛选后的可用集合对齐时，选择 `all` 并同时阅读其中的完整清单和排除项。
+注意搭配边界：九个 Mo Skill 可以独立复制。需要收敛尚未定案的方案和术语时，推荐使用 Matt Pocock Skills 的 `grill-with-docs`；需要执行 `research-brief` 已准备好的实际调研时，推荐使用 `research`。需要创建、改造或评测经过确认的新 Skill 时，推荐使用 `skill-creator`。这些都不是硬依赖：项目可以使用职责等价、并在项目规则中明确的替代流程。没有这类既有流程时，建议采用 `recommended`；需要与作者当前筛选后的可用集合对齐时，选择 `all` 并同时阅读其中的完整清单和排除项。
 
 建议先从一个实际问题开始，而不是一次装完：
 

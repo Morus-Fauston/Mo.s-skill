@@ -1,5 +1,36 @@
 # Changelog
 
+## v0.3.0 (2026-08-15 16:27)
+
+### 新增
+
+- **Skill 工作流重编排**：新增 `skill-workflow-orchestrator`，将已有 Skill 的事实基线转为可确认的主入口、转交、精简与新 Skill 候选方案。
+  - 先要求 `skill-workflow-visualizer` 的真实正文分析结果，区分当前事实、历史观察和用户尚未确认的建议。
+  - 新 Skill 仅在重复稳定、边界清楚、现有能力无法承接、封装有收益且可评测时进入候选；确认后转交 `skill-creator`。
+
+### 架构改进
+
+- **三层职责分离**：收敛 `skill-workflow-visualizer` 为事实提取、协作图与可选历史聚合信号层；重编排决策由 `skill-workflow-orchestrator` 负责，创建和评测由 `skill-creator` 负责。
+- **人工确认边界**：允许基于事实基线直接分析重编排方案；只有更新工作流、安装范围、清单或创建、改造、删除 Skill 时才等待用户确认。
+
+### 调整
+
+- **安装范围一致性**：统一公开安装口径为 9 个自有 Skill、31 个推荐上游 Skill、47 个完整精选上游 Skill，即 `own = 9`、`recommended = 40`、`all = 56`。
+- **可移植发布说明**：移除作者本机、共享目录和用户级安装状态描述，将 `all` 明确为可复现的精选来源索引。
+- **维护约束**：仓库指令不再写死本地 Skill 数量；验证脚本从实际目录和 manifest 计算并报告三档总数。
+
+### 文件变更表
+
+| 文件 | 变更 |
+|:-----|:------|
+| `skills/skill-workflow-orchestrator/` | **新增** 重编排 Skill 与三组行为评测 |
+| `skills/skill-workflow-visualizer/` | 收敛为事实可视化和历史聚合信号输入层 |
+| `README.md`、`CONTRIBUTING.md`、`docs/*.md` | 更新仓库定位、协作边界、安装范围与来源说明 |
+| `manifests/all-used.json` | 统一完整精选清单口径并移除机器状态描述 |
+| `scripts/validate.ps1`、`.github/copilot-instructions.md` | 从实际数据计算数量，并移除写死的 Skill 数量 |
+
+---
+
 ## v0.2.0 (2026-08-14 23:21)
 
 ### 新增

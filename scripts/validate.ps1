@@ -6,7 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $skillFiles = Get-ChildItem -Path (Join-Path $repoRoot 'skills') -Filter 'SKILL.md' -Recurse
-if ($skillFiles.Count -ne 8) { throw "Expected 8 SKILL.md files, found $($skillFiles.Count)." }
+$ownedSkillCount = $skillFiles.Count
+if ($ownedSkillCount -eq 0) { throw 'No local SKILL.md files found.' }
 
 foreach ($skillFile in $skillFiles) {
     $content = Get-Content -Raw -Encoding UTF8 -Path $skillFile.FullName
@@ -49,4 +50,11 @@ Get-ChildItem -Path (Join-Path $repoRoot 'manifests') -Filter '*.json' | ForEach
     }
 }
 
-Write-Host 'Validation passed: 8 local skills, 8 eval documents, and 2 upstream source indexes.'
+$recommendedManifest = Get-Content -Raw -Encoding UTF8 -Path (Join-Path $repoRoot 'manifests\recommended.json') | ConvertFrom-Json
+$allManifest = Get-Content -Raw -Encoding UTF8 -Path (Join-Path $repoRoot 'manifests\all-used.json') | ConvertFrom-Json
+$recommendedUpstreamCount = @($recommendedManifest.packages | ForEach-Object { @($_.skills).Count } | Measure-Object -Sum).Sum
+$allUpstreamCount = @($allManifest.packages | ForEach-Object { @($_.skills).Count } | Measure-Object -Sum).Sum
+$recommendedTotal = $ownedSkillCount + $recommendedUpstreamCount
+$allTotal = $ownedSkillCount + $allUpstreamCount
+
+Write-Host "Validation passed: $ownedSkillCount local skills, $ownedSkillCount eval documents, $recommendedTotal recommended skills, and $allTotal all-tier skills."
