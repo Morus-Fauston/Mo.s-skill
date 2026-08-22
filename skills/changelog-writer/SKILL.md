@@ -12,6 +12,13 @@ description: >
 
 分析上一个版本以来的 Git 改动，起草两份更新日志文件（详细 Markdown 与精简纯文本），再按用户确认选择是否提交和推送。
 
+## 完成条件与上下文摘要
+
+- 维护参考：`skills/_shared/references/work-item-contract.md`、`skills/_shared/references/evidence-status.md`、`skills/_shared/references/confirmation-gates.md`。
+- 完成条件：两份日志草稿、版本建议、准确暂存范围和用户确认状态都已明确；用户选择的 Git 动作完成后，本 Skill 结束。
+- 同一上下文继续工作时不需要输出固定表格；只有跨 Agent、跨会话或长期留档时，才摘要版本、证据、暂存范围、未决问题和下一步。
+- 没有用户确认时，状态必须停在 `awaiting-user`，不得写入日志或执行 Git 动作。
+
 ## 为什么使用两份文件
 
 - `CHANGELOG.md`：供开发者和审阅者阅读的完整记录，允许表格、子要点和 Markdown。

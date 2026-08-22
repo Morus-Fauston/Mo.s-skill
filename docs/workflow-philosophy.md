@@ -58,7 +58,7 @@ Git 历史、文件内容、测试输出和真实环境观察是事实；审计�
 
 ### 以职责组合，而不是以工具绑定
 
-每个原创 Skill 应有清楚的输入、输出、边界和转交条件。上游 Skill 可以承担相邻职责，也可以被项目已有的等价流程替换。Mo.s-Skill 关心的是“谁负责把未决问题收敛”“谁负责实际调研”“谁负责验收”，而不是强制某一个插件、目录或安装命令。
+每个原创 Skill 应有清楚的输入、输出、边界和转交条件。通用执行能力优先交给成熟的上游 Skill，本地 Skill 只保留独有的路由判断、项目治理、证据边界和人工确认门。上游 Skill 可以承担相邻职责，也可以被项目已有的等价流程替换。Mo.s-Skill 关心的是“谁负责把未决问题收敛”“谁负责实际调研”“谁负责验收”，而不是强制某一个插件、目录或安装命令。
 
 ## 九个原创 Skill 的分工
 
@@ -84,6 +84,8 @@ Git 历史、文件内容、测试输出和真实环境观察是事实；审计�
 - 上游项目不属于本仓库的实现、版本或许可范围。
 - `grill-with-docs`、`research` 等推荐搭档不是硬依赖；项目可采用职责等价的既有流程。
 - 上游清单变化时，应先检查它是否填补明确需求、是否与现有主入口重叠、是否具有可执行的转交条件；不因目录数量或来源热度而扩充。
+- 同一 Agent 内同时安装本地和上游能力时，本地 Skill 是领域路由入口，上游 Skill 是执行器。上游同名或近名能力不自动成为第二个主入口，除非项目明确改用它作为替代。
+- `decision-to-spec` 在缺少完整功能规格时转交上游 `to-spec`；`evidence-based-validation` 和 `phase-acceptance` 优先消费上游 `check`、`code-review`、`webapp-testing` 或项目测试的结果；`interaction-prototype-to-spec` 默认调用上游 `ui` 制作视觉原型，复杂状态才调用 `prototype`；`research-brief` 在用户确认任务书后转交上游 `research`。
 - `all` 是作者当前筛选结果的记录，不是鼓励任何使用者安装全部内容的清单。
 
 具体协作关系见 [workflows.md](workflows.md)，安装范围和上游清单见 [curated-tiers.md](curated-tiers.md)，许可边界见 [source-attribution.md](source-attribution.md)。

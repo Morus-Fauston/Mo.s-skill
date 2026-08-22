@@ -1,3 +1,7 @@
 .DS_Store
 Thumbs.db
 .skills/
+.skills/upstream/
+docs/local-agent-skills.md
+docs/research/skill-workflow-maturity-review-2026-08-23.md
+AGENTS.md

@@ -1,5 +1,53 @@
 # Changelog
 
+## v0.4.0 (2026-08-23 01:39)
+
+### 新增
+
+- **上游优先路由**：将本地 Skill 收敛为路由、治理、证据边界和人工确认层，优先调用上游 Skill 执行规格生成、原型制作、代码审查、浏览器验证和实际调研。
+  - `decision-to-spec` 在缺少完整功能规格时转交 `to-spec`。
+  - `interaction-prototype-to-spec` 默认调用 `ui` 制作视觉原型，复杂状态时补充 `prototype`。
+  - `evidence-based-validation` 和 `phase-acceptance` 优先消费 `check`、`code-review`、`webapp-testing` 和项目测试结果。
+  - `research-brief` 在用户确认任务书后转交 `research`。
+- **上游参考缓存**：增加 `.skills/upstream/` 本机参考目录约定，用于保存官方上游仓库副本；该目录被 Git 忽略，不参与发布和运行时安装。
+- **共享工作流契约**：新增工作上下文、证据状态和人工确认门参考文件。
+  - 同一 Agent、同一上下文连续调用 Skill 时不要求填写表单。
+  - 只有跨 Agent、跨会话或长期复用时，才按需摘要工作背景。
+  - 默认不因上下文摘要创建独立过程文件。
+- **领域术语和架构记录**：新增工作流领域术语说明和共享契约架构决策记录。
+
+### 架构改进
+
+- **职责分层**：将本地 Skill 与上游执行器明确分层，减少本地 Skill 对通用测试、原型、研究和规格流程的重复实现。
+- **验证边界**：压缩 `evidence-based-validation` 和 `phase-acceptance` 中的执行教程，保留验证层选择、证据边界、阶段契约和人工验收判断。
+- **交互原型路由**：压缩 `interaction-prototype-to-spec` 的原型实现说明，改为负责交互问题定义、方案比较、用户体验确认和交互契约整理。
+- **状态分层**：区分工作项状态、验证项状态和阶段结论，避免将“待人工”“阻塞”和“部分通过”混为同一层级。
+- **独立分发**：共享参考文件仅用于维护，不成为单个 Skill 的运行时硬依赖；每个 `SKILL.md` 保留独立运行所需的最小摘要。
+
+### 调整
+
+- **跨 Agent/跨会话上下文**：将原先容易误解为“跨 Skill 交接”的概念改为按需工作上下文摘要。
+- **工作编号**：不再要求每个请求生成编号；只有跨 Agent、跨会话或已有 Issue/阶段编号时才使用。
+- **评测覆盖**：增加并更新规格生成、验证、原型和阶段验收的跨 Skill 路由与上下文复用场景。
+- **安装说明**：补充共享维护参考、上游参考缓存和独立 Skill 安装边界。
+- **忽略规则**：忽略本轮生成的研究报告，不忽略整个 `docs/research/` 目录。
+
+### 文件变更表
+
+| 文件 | 变更 |
+|:-----|:------|
+| `skills/_shared/references/` | **新增** 工作上下文、证据状态和确认门参考 |
+| `CONTEXT.md` | **新增** 工作流领域术语说明 |
+| `docs/adr/0001-shared-contracts-with-standalone-skills.md` | **新增** 共享契约与独立分发架构决策 |
+| `skills/*/SKILL.md` | 更新上游路由、完成条件、上下文摘要和职责边界 |
+| `skills/*/evals/evals.json` | 增加跨 Skill 路由、证据复用和用户确认场景 |
+| `docs/workflow-philosophy.md`、`docs/skill-selection.md`、`docs/workflows.md` | 更新工作流原则、入口选择和协作关系 |
+| `docs/installation.md`、`CONTRIBUTING.md` | 更新安装、维护和共享参考规则 |
+| `manifests/*.json` | 同步上游来源和精选清单 |
+| `.gitignore` | 忽略上游参考缓存和本轮研究报告 |
+
+---
+
 ## v0.3.0 (2026-08-15 16:27)
 
 ### 新增

@@ -7,6 +7,13 @@ description: "将一组 Agent Skill 的真实触发条件、自动步骤、人�
 
 这个 Skill 把一组 Skill 的实际运行规则转成可复核的说明，而不是根据名称猜测流程。目标是让人一眼看出：什么时候选哪个 Skill、Agent 会自动做什么、哪里必须由人决定、结果应如何交给下一个环节。
 
+## 完成条件与上下文摘要
+
+- 维护参考：`skills/_shared/references/work-item-contract.md`、`skills/_shared/references/evidence-status.md`。
+- 完成条件：分析范围、触发条件、前提、自动步骤、人工关口、输出、转交关系和未核实项都有正文证据。
+- 同一上下文继续重编排时直接复用可视化结果；只有跨 Agent、跨会话或长期留档时，才摘要范围、已读取 Skill、证据、路由发现、未决问题和下一步。
+- 需要精简、合并或改造时，把事实基线交给 `skill-workflow-orchestrator`，不直接改被分析的 Skill。
+
 ## 适用边界
 
 - 输入可以是指定的 Skill 名称、一个 Agent 的 Skill 目录，或现有的工作流文档。

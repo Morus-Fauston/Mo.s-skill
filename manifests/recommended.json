@@ -7,6 +7,10 @@
       "skills": ["ask-matt", "check", "code-review", "codebase-design", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "health", "hunt", "implement", "improve-codebase-architecture", "learn", "prototype", "read", "research", "tdd", "teach", "think", "to-spec", "to-tickets", "triage", "ui", "wayfinder", "webapp-testing", "write"]
     },
     {
+      "source": "https://github.com/anthropics/skills",
+      "skills": ["discernment-nudge"]
+    },
+    {
       "source": "https://github.com/wshobson/agents",
       "skills": ["doc-coauthoring", "git-guardrails-claude-code", "resolving-merge-conflicts"]
     },

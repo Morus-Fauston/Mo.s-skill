@@ -7,6 +7,13 @@ description: "根据 Skill 工作流可视化结果、当前 Skill 正文、项�
 
 这个 Skill 把“已有 Skill 实际如何协作”的事实，转化为一份可供用户选择的工作流重编排方案。它解决的是：哪些问题缺少主入口、哪些 Skill 职责重叠、哪些重复工作值得封装、以及现有工作流应如何收敛。
 
+## 完成条件与上下文摘要
+
+- 维护参考：`skills/_shared/references/work-item-contract.md`、`skills/_shared/references/confirmation-gates.md`。
+- 完成条件：主入口、转交、精简和新 Skill 候选都有事实证据、收益、风险和待确认决定；未确认的建议不进入执行。
+- 同一上下文继续修改或评测时直接复用当前方案；只有跨 Agent、跨会话或长期留档时，才摘要事实基线、路由/精简/新 Skill 候选、未决问题和下一步。
+- 用户确认创建或改造 Skill 后，只把候选契约和评测场景交给 `skill-creator`；删除、安装和清单变更仍需单独确认。
+
 它不负责猜测已有 Skill 的行为，也不直接编写新 Skill。前者由 `skill-workflow-visualizer` 完成，后者由 `skill-creator` 完成。
 
 ## 适用边界

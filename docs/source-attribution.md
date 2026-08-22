@@ -11,10 +11,9 @@
 | 上游项目 | 为什么被记录 | 获取与许可原则 |
 | --- | --- | --- |
 | [Matt Pocock Skills](https://github.com/mattpocock/skills) | 工程规划、调研、测试、审查、界面和交接等通用工作流；其中 `grill-with-docs` 与 `research` 是 Mo 工作流的默认推荐搭档 | 使用其官方插件或 `skills.sh` 路径；以其仓库的许可证和发布说明为准。 |
-| [Anthropic Skills](https://github.com/anthropics/skills) | 文档、表格、演示文稿、设计和技术示例 | Claude Code 可使用其官方市场；注意其中内容的许可并不完全相同，尤其文档类内容可能是 source-available。 |
+| [Anthropic Skills](https://github.com/anthropics/skills) | 文档、表格、演示文稿、设计、技术示例和回答复核 | Claude Code 可使用其官方市场；注意其中内容的许可并不完全相同，尤其文档类内容可能是 source-available。 |
 | [Agentic Plugin Marketplace](https://github.com/wshobson/agents) | 面向 Claude Code、Codex、Cursor、OpenCode、Gemini CLI 与 Copilot 的原生适配参考 | 使用其对应 Agent 的官方市场或生成流程；以它的多 harness 文档为准。 |
 | [Kill AI Slop](https://github.com/yetone/kill-ai-slop) | Web 项目的视觉与文案默认模式扫描、审阅和小范围修正 | Apache-2.0；按其官方说明安装完整 `skill/` 目录。 |
-| [PPT Master](https://github.com/hugohe3/ppt-master) | 原生可编辑 PowerPoint 工作流 | 按其官方说明处理 Python 运行时依赖。 |
 
 ## 维护上游索引
 

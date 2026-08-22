@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "Complete upstream index: 47 upstream Skills plus 9 owned Skills. It records a curated, reproducible selection rather than a mechanical merge of every available Skill directory.",
+  "description": "Complete upstream index: 46 upstream Skills plus 9 owned Skills. It records a curated, reproducible selection rather than a mechanical merge of every available Skill directory.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
@@ -8,7 +8,7 @@
     },
     {
       "source": "https://github.com/anthropics/skills",
-      "skills": ["algorithmic-art", "brand-guidelines", "canvas-design", "docx", "frontend-design", "mcp-builder", "pdf", "pptx", "skill-creator", "theme-factory", "web-artifacts-builder", "xlsx"]
+      "skills": ["algorithmic-art", "brand-guidelines", "canvas-design", "discernment-nudge", "docx", "frontend-design", "mcp-builder", "pdf", "pptx", "skill-creator", "theme-factory", "web-artifacts-builder", "xlsx"]
     },
     {
       "source": "https://github.com/wshobson/agents",
@@ -19,12 +19,6 @@
       "skills": ["kill-ai-slop"],
       "license": "Apache-2.0",
       "install_path": "skill/"
-    },
-    {
-      "source": "https://github.com/hugohe3/ppt-master",
-      "skills": ["ppt-master"],
-      "optional": true,
-      "note": "PPT Master may require separate Python runtime dependencies. Read its upstream documentation after installing."
     }
   ],
   "excluded_from_selection": [
@@ -40,6 +34,11 @@
       "name": "template-skill",
       "source": "https://github.com/anthropics/skills",
       "reason": "Upstream placeholder template whose body still says 'Replace with description'; it is not part of this curated selection."
+    },
+    {
+      "name": "implement-spec",
+      "source": "https://github.com/mattpocock/skills",
+      "reason": "In-progress beta Skill for driving a spec and blocking ticket graph to one PR; keep under observation until its boundary with the stable implement Skill and its multi-worktree flow mature."
     }
   ]
 }

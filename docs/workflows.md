@@ -17,7 +17,10 @@ flowchart TD
     Choose -->|Skill 关系需要核对| Visualizer[skill-workflow-visualizer]
     Choose -->|想重编排或精简 Skill 系统| Orchestrator[skill-workflow-orchestrator]
 
-    Prototype -->|用户确认交互规则| Spec
+    Prototype -.->|默认调用 ui 制作视觉原型| UI[ui]
+    Prototype -.->|复杂状态时调用| LogicPrototype[prototype]
+    UI -->|用户体验并确认交互规则| Spec
+    LogicPrototype -->|用户体验并确认交互规则| Spec
     Brief -->|用户自行派发并决定是否采纳结论| Spec
     Audit -->|发现已确认决定没有落点| Spec
     Validation -->|多个承诺需要统一验收| Acceptance
@@ -50,7 +53,8 @@ flowchart TD
 ```mermaid
 flowchart LR
     A[一个具体改动] --> B[evidence-based-validation]
-    B --> C[验证卡：已执行证据、待人工、阻塞]
+    B -.->|调用或消费| Check[check / code-review / webapp-testing / 项目测试]
+    Check --> C[验证卡：已执行证据、待人工、阻塞]
     C --> D{多个承诺组成阶段或版本}
     D -->|是| E[phase-acceptance]
     D -->|否| F[结束]
@@ -79,7 +83,7 @@ flowchart TD
 
 | 场景 | 正确入口 | 人工关口 | 不应发生的事 |
 | --- | --- | --- | --- |
-| 复杂交互需要先体验 | `interaction-prototype-to-spec` | 用户确认入口、状态、数据和权限取舍 | 把原型当作生产实现或正式规格 |
+| 复杂交互需要先体验 | `interaction-prototype-to-spec` | 用户确认入口、状态、数据和权限取舍 | 默认调用 `ui` 做视觉原型；复杂状态时补 `prototype`；不把原型当作生产实现或正式规格 |
 | 需要把重要问题交给独立 Agent 研究 | `research-brief` | 用户确认范围、版本和证据标准；之后自行决定是否派发和采纳 | 自动派发、自动采纳研究建议 |
 | 文档迁移后链接和状态可能出错 | `docs-integrity-audit` | 用户确认已证实机械修复的范围 | 擅自改写业务决策或删除历史资料 |
 

@@ -2,6 +2,20 @@
 
 这九个原创 Skill 是工作流编排方法的示范实现，不是九条必须依次执行的命令。先回答“我现在最直接要解决什么”，再选择一个主入口。要盘点自己的全部 Skill，先使用 `skill-workflow-visualizer` 从真实正文生成选择表和流程图；要根据事实结果重编排、精简或发现新 Skill 候选，再使用 `skill-workflow-orchestrator`；本页展示的是该方法在九个原创 Skill 上的一个参考结果。
 
+## 上游优先
+
+本地 Skill 默认是路由和治理层，不重复实现成熟上游 Skill 的通用执行能力。同一 Agent 同时安装两者时，先选择本地领域入口，再按条件转交上游执行器：
+
+| 本地入口 | 独有部分 | 默认上游执行器 |
+| --- | --- | --- |
+| `decision-to-spec` | 已确认决定的文档归属、同步和一致性 | `to-spec`，仅在缺少完整规格时转交 |
+| `evidence-based-validation` | 单个改动的验证层选择、证据边界和验证卡 | `check`、`code-review`、`webapp-testing` 或项目测试 |
+| `phase-acceptance` | 阶段契约、证据汇总、人工清单和阶段结论 | `check`、`code-review`、`webapp-testing` 或项目测试 |
+| `interaction-prototype-to-spec` | 交互问题、方案比较、用户确认门和交互契约 | 默认 `ui`，复杂状态时补 `prototype` |
+| `research-brief` | 是否值得外包、研究范围、证据标准和接收条件 | 用户确认后转 `research` |
+
+上游 Skill 的执行结果应带回可复核的文件/地址、覆盖范围、环境、证据和未覆盖边界。本地入口不能把上游的局部结果扩大成完整规格、阶段通过或生产实现。
+
 ## 快速选择
 
 | 当前需求 | Skill | 它解决什么 | 它不解决什么 |

@@ -1,3 +1,19 @@
+v0.4.0 (2026-08-23 01:39)
+  新增: 本地 Skill 改为路由与治理层，优先调用上游 Skill 执行规格、原型、审查、验证和调研
+  新增: 增加 .skills/upstream/ 上游参考缓存约定，并保持缓存不进入 Git 或发布内容
+  新增: 增加工作上下文、证据状态和人工确认门参考
+  新增: 增加工作流领域术语和共享契约架构记录
+  架构改进: 压缩 phase-acceptance、evidence-based-validation 和 interaction-prototype-to-spec 的重复执行教程
+  架构改进: 区分工作项状态、验证项状态和阶段结论
+  架构改进: 同一 Agent 同一上下文无需填写交接表，跨 Agent 或跨会话时才按需摘要
+  调整: decision-to-spec 转交 to-spec，原型默认调用 ui，复杂状态补充 prototype
+  调整: 阶段验收和单改动验证优先消费已有 check、code-review、webapp-testing 和项目测试证据
+  调整: 增加跨 Skill 路由与上下文复用评测
+  调整: 更新安装、贡献、工作流和上游来源说明
+  技术: validate.ps1 继续通过 9 个本地 Skill、9 份评测文档、41 个 recommended Skill 和 56 个 all-tier Skill
+
+====
+
 v0.3.0 (2026-08-15 16:27)
   新增: 发布 skill-workflow-orchestrator，基于可视化事实提出主入口、转交、精简与新 Skill 候选
   架构改进: visualizer 只负责事实与历史聚合信号 / orchestrator 负责重编排方案 / 确认创建或改造后转 skill-creator

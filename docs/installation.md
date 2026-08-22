@@ -13,7 +13,20 @@ Mo.s-Skill 发布的是标准 Skill 目录，而不是一个绑定某个 Agent �
 | `changelog-writer` | `SKILL.md`、`references/changelog-format.md` |
 | 其余 8 个自有 Skill | 仅 `SKILL.md` |
 
+`skills/_shared/references/` 是维护版的共享契约参考，不是独立可加载 Skill。维护或评测多个本地 Skill 时可以一并保留；只安装一个 Skill 时不要求复制它，因为该 Skill 的 `SKILL.md` 已保留可独立运行的最小摘要。
+
 不同 Agent 对 Skill 的发现位置、项目级覆盖规则、插件市场和更新机制并不相同。一个脚本若擅自把文件复制到几个猜测的目录，只能覆盖少数本机配置，也会绕过 Agent 自己的更新和卸载机制。因此请按你使用的 Agent 选择原生方式。
+
+## 上游参考缓存
+
+维护者可以把上游仓库克隆到 `.skills/upstream/` 作为本机只读参考，并将该目录保持在 `.gitignore` 中。它只用于对照上游正文、核对转交协议和辅助维护，不属于发布内容、安装来源或运行时依赖。
+
+- `skills/`：本仓库维护并发布的自有 Skill，纳入 Git。
+- `.skills/upstream/`：上游仓库的本机参考副本，不纳入 Git。
+- `manifests/` 和 `docs/`：记录官方来源、Skill 名称和边界，纳入 Git。
+- 日常安装和更新：仍使用各 Agent 或上游项目的官方入口。
+
+上游缓存缺失时，所有本地 Skill 和校验脚本仍应正常工作；不得从缓存目录复制第三方正文到 `skills/`，也不得把缓存内容打入发布包。
 
 ## 方式一：复制到项目
 
@@ -56,7 +69,7 @@ Mo.s-Skill 当前没有为任何单一市场发布专用插件包。原因不是
 | 档位 | 可加载 Skill 数量 | 适用目标 |
 | --- | ---: | --- |
 | `own` | 9 | 只使用本仓库自有 Skill，或已有等价上游工作流。 |
-| `recommended` | 40 | 采用作者日常推荐的完整工程组合。 |
+| `recommended` | 41 | 采用作者日常推荐的完整工程组合。 |
 | `all` | 56 | 复现作者当前筛选后的可用 Skill 集合。 |
 
 三档的逐项清单、来源和排除项见 [curated-tiers.md](curated-tiers.md)。三档是选择范围，不是统一安装命令；上游 Skill 必须由其官方渠道安装。

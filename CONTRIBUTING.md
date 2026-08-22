@@ -6,6 +6,8 @@
 
 发布给普通使用者时，默认只安装使用版：`SKILL.md` 加运行时需要的引用文件、脚本或资源，不包含 `evals/`。维护、修改或评测 Skill 时才保留完整目录；当前使用版文件清单见 [docs/installation.md](docs/installation.md)。
 
+`skills/_shared/references/` 只存放跨 Skill 的维护契约，例如工作项字段、证据状态和确认门。它不是可加载 Skill，也不能成为单个 Skill 的运行时硬依赖；每个 `SKILL.md` 必须保留自己的触发、边界、完成条件和最小交接摘要。
+
 提交前运行：
 
 ```powershell
