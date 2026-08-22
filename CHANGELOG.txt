@@ -1,16 +1,9 @@
-v0.4.0 (2026-08-23 01:39)
-  新增: 本地 Skill 改为路由与治理层，优先调用上游 Skill 执行规格、原型、审查、验证和调研
-  新增: 增加 .skills/upstream/ 上游参考缓存约定，并保持缓存不进入 Git 或发布内容
-  新增: 增加工作上下文、证据状态和人工确认门参考
-  新增: 增加工作流领域术语和共享契约架构记录
-  架构改进: 压缩 phase-acceptance、evidence-based-validation 和 interaction-prototype-to-spec 的重复执行教程
-  架构改进: 区分工作项状态、验证项状态和阶段结论
-  架构改进: 同一 Agent 同一上下文无需填写交接表，跨 Agent 或跨会话时才按需摘要
-  调整: decision-to-spec 转交 to-spec，原型默认调用 ui，复杂状态补充 prototype
-  调整: 阶段验收和单改动验证优先消费已有 check、code-review、webapp-testing 和项目测试证据
-  调整: 增加跨 Skill 路由与上下文复用评测
-  调整: 更新安装、贡献、工作流和上游来源说明
-  技术: validate.ps1 继续通过 9 个本地 Skill、9 份评测文档、41 个 recommended Skill 和 56 个 all-tier Skill
+v0.5.0 (2026-08-23 03:55)
+  调整: 重新核对并修正上游 Skill 来源 / 移除无法核验的 writing-great-skills 和未采用的 wshobson/agents
+  调整: 重索引 Waza 的 check、health、hunt、learn、read、think、ui、write，不新增 Skill 内容
+  文档: 汉化 docs 文件名并修复相对链接 / 同步 recommended 与 all 清单、来源和安装说明 / 加入 Huashu Design 与 Waza 来源说明
+  技术: 增强 validate.ps1 校验 / 增加上游路由、证据复用、用户确认和工作流编排评测
+  维护: 忽略本机 Agent Skill 盘点文件，避免机器状态进入版本控制
 
 ====
 

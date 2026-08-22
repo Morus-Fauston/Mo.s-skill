@@ -1,5 +1,36 @@
 # Changelog
 
+## v0.5.0 (2026-08-23 03:55)
+
+### 调整
+
+- **上游来源重索引**：重新核对本地上游缓存与两个 manifest 的 Skill 来源，修正 `webapp-testing`、`doc-coauthoring`、`diagnosing-bugs`、`git-guardrails-claude-code` 和 `resolving-merge-conflicts` 的归属，并移除无法核验的 `writing-great-skills` 与未采用的 `wshobson/agents` 来源。
+- **Waza 重索引**：将现有 Waza Skill 重新登记为 `check`、`health`、`hunt`、`learn`、`read`、`think`、`ui`、`write`，不新增 Skill 内容。
+
+### 文档
+
+- **文档路径汉化**：将 `docs/` 下现行文档、ADR 和研究文件改为中文文件名，并修复改名后遗留的相对链接。
+- **清单同步**：同步 `recommended` 和 `all` 的数量、上游来源、Skill 明细、排除项及安装说明，加入 Huashu Design 和 Waza 的来源说明。
+- **本机盘点隔离**：将本机 Agent Skill 盘点文件加入 `.gitignore`，避免机器状态进入版本控制。
+
+### 技术
+
+- **校验增强**：扩展 `validate.ps1` 对本地 Skill、评测文档、manifest JSON、数量和重复来源的检查。
+- **评测覆盖**：增加上游路由、证据复用、用户确认和工作流编排场景的评测用例。
+
+### 文件变更表
+
+| 文件 | 变更 |
+|:-----|:------|
+| `.gitignore` | 更新本机盘点和上游参考文件的忽略规则 |
+| `manifests/recommended.json`、`manifests/all-used.json` | 修正上游来源并同步精选清单 |
+| `scripts/validate.ps1` | 增强 Skill、评测和 manifest 校验 |
+| `docs/` | 汉化文件名、修复链接并同步来源和数量说明 |
+| `skills/_shared/references/evidence-status.md` | 增加共享证据状态参考 |
+| `skills/*/SKILL.md`、`skills/*/evals/evals.json` | 更新路由、确认规则和评测覆盖 |
+
+---
+
 ## v0.4.0 (2026-08-23 01:39)
 
 ### 新增
@@ -38,11 +69,11 @@
 |:-----|:------|
 | `skills/_shared/references/` | **新增** 工作上下文、证据状态和确认门参考 |
 | `CONTEXT.md` | **新增** 工作流领域术语说明 |
-| `docs/adr/0001-shared-contracts-with-standalone-skills.md` | **新增** 共享契约与独立分发架构决策 |
+| `docs/adr/0001-共享契约与独立Skill.md` | **新增** 共享契约与独立分发架构决策 |
 | `skills/*/SKILL.md` | 更新上游路由、完成条件、上下文摘要和职责边界 |
 | `skills/*/evals/evals.json` | 增加跨 Skill 路由、证据复用和用户确认场景 |
-| `docs/workflow-philosophy.md`、`docs/skill-selection.md`、`docs/workflows.md` | 更新工作流原则、入口选择和协作关系 |
-| `docs/installation.md`、`CONTRIBUTING.md` | 更新安装、维护和共享参考规则 |
+| `docs/工作流设计哲学.md`、`docs/技能选择.md`、`docs/工作流协作.md` | 更新工作流原则、入口选择和协作关系 |
+| `docs/安装与更新.md`、`CONTRIBUTING.md` | 更新安装、维护和共享参考规则 |
 | `manifests/*.json` | 同步上游来源和精选清单 |
 | `.gitignore` | 忽略上游参考缓存和本轮研究报告 |
 
@@ -101,10 +132,10 @@
 
 | 文件 | 变更 |
 |:-----|:------|
-| `docs/workflow-philosophy.md` | **新增** 工作流设计哲学、原创 Skill 分工与上游角色说明 |
+| `docs/工作流设计哲学.md` | **新增** 工作流设计哲学、原创 Skill 分工与上游角色说明 |
 | `README.md`、`CONTRIBUTING.md` | 明确仓库定位、安装入口与维护边界 |
-| `docs/installation.md`、`docs/curated-tiers.md` | 更新三档数量、完整 Skill 清单和排除规则 |
-| `docs/source-attribution.md` | 调整上游来源定位与许可说明 |
+| `docs/安装与更新.md`、`docs/分层清单.md` | 更新三档数量、完整 Skill 清单和排除规则 |
+| `docs/来源与许可.md` | 调整上游来源定位与许可说明 |
 | `manifests/recommended.json`、`manifests/all-used.json` | 扩展推荐清单，记录筛选后的 all 基线与排除项 |
 
 ---

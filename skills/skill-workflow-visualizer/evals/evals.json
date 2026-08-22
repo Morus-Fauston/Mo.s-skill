@@ -5,25 +5,48 @@
       "id": "updated-skill-workflow",
       "prompt": "我更新了 grilling、think 和 to-spec，帮我检查现有 Skill 工作流图是否过期并重画。",
       "expected_output": "读取当前 Skill 正文，列出已证实的变化，更新或交付含人工关口和非自动转交标注的 Mermaid 工作流。",
-      "files": []
+      "files": [],
+      "expectations": [
+        "读取当前相关 SKILL.md 正文，而不是只依据 description、旧流程图或会话记忆判断变化。",
+        "只把正文能够证明的变化画入工作流，无法确认的内容标为待核实。",
+        "Mermaid 图明确区分自动调用、用户明确要求、条件建议和外部执行。",
+        "默认只更新已证实过期的工作流文档，不修改被分析 Skill 的正文。"
+      ]
     },
     {
       "id": "cross-agent-duplicates",
       "prompt": "Copilot 和 Claude 都有 research、handoff 和 code-review，帮我画一张 Skill 协作图并看看要不要去重。",
       "expected_output": "先区分不同 Agent 的同步副本与同一 Agent 内的职责重叠，不因跨 Agent 同名而建议删除，并交付协作图。",
-      "files": []
+      "files": [],
+      "expectations": [
+        "记录并区分两个 Agent 的 Skill 作用域和实际正文。",
+        "不把跨 Agent 的同名 Skill 自动判定为重复或删除候选。",
+        "只有同一 Agent 内触发条件和职责实质重叠时才提出去重待核实项。",
+        "协作图标明人工确认门，不把推荐后续动作画成自动调用。"
+      ]
     },
     {
       "id": "approval-is-not-implementation",
       "prompt": "把 grill、think、research、decision-to-spec 和 implement 的流程画出来。",
       "expected_output": "明确讨论完成、计划批准、研究采纳、写正式文档和授权实现是不同关口，不将它们画成无条件自动链路。",
-      "files": []
+      "files": [],
+      "expectations": [
+        "区分讨论完成、计划批准、研究建议采纳、正式文档写入和实现授权。",
+        "没有把研究完成、计划批准或文档同步自动解释为实现授权。",
+        "所有需要用户选择或批准的节点都明确标注等待用户。"
+      ]
     },
     {
       "id": "cross-project-history-optimization",
       "prompt": "根据我跨项目的对话历史，找出我常用的 Skill 和常见转交路径，帮我优化个人工作流。",
       "expected_output": "仅在用户明确请求且历史工具可用时分析最小聚合使用模式；将历史观察与当前 SKILL.md 事实分开，输出使用、转交和重复工作等事实信号；需要重编排或创建新 Skill 时，明确转交 skill-workflow-orchestrator。",
-      "files": []
+      "files": [],
+      "expectations": [
+        "只使用用户明确授权且当前可访问的历史范围，并说明覆盖范围和限制。",
+        "只输出聚合的使用频率、起始问题、转交路径和重复工作信号，不泄露无关对话内容。",
+        "将历史观察与当前 SKILL.md 和项目规则事实分开记录。",
+        "需要精简、重编排或创建新 Skill 时转交 skill-workflow-orchestrator，不在本 Skill 中直接修改 Skill。"
+      ]
     }
   ]
 }

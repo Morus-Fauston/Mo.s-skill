@@ -17,7 +17,7 @@
 
 要开始整理自己的 Skill，推荐先使用 `skill-workflow-visualizer`：它从真实 `SKILL.md` 提取触发条件、自动步骤、人工关口、转交关系和最终产物，形成可审阅的选择表与工作流图。再使用 `skill-workflow-orchestrator` 根据这些事实决定主入口、转交条件、应删除或降级的冗余项，以及是否存在值得交给 `skill-creator` 封装的新重复工作。
 
-完整原则、边界和九个 Skill 的协作方式见 [docs/workflow-philosophy.md](docs/workflow-philosophy.md)。
+完整原则、边界和九个 Skill 的协作方式见 [docs/工作流设计哲学.md](docs/工作流设计哲学.md)。
 
 ## 适用场景
 
@@ -35,7 +35,7 @@ Agent 在代码工作中常见的失败不是不会生成代码，而是过早�
 | 一组 Skill 更新后，想核对真实触发和协作关系 | `skill-workflow-visualizer` | 选择表、工作流图和待核实项 |
 | 想精简、重编排 Skill 工作流，或发现值得封装的新重复工作 | `skill-workflow-orchestrator` | 经确认的主入口、转交、精简与新 Skill 候选方案 |
 
-完整的适用条件、边界和常见串联方式见 [docs/skill-selection.md](docs/skill-selection.md)。
+完整的适用条件、边界和常见串联方式见 [docs/技能选择.md](docs/技能选择.md)。
 
 ## 工作方式
 
@@ -56,7 +56,7 @@ flowchart LR
     K --> C
 ```
 
-这条图不是强制流水线。应当从当前最直接的问题开始：单个改动不需要阶段验收；尚未定案的想法不能直接进入文档同步；调研任务书不会自动派发调研。完整转交规则和人工确认点见 [docs/workflows.md](docs/workflows.md)。
+这条图不是强制流水线。应当从当前最直接的问题开始：单个改动不需要阶段验收；尚未定案的想法不能直接进入文档同步；调研任务书不会自动派发调研。完整转交规则和人工确认点见 [docs/工作流协作.md](docs/工作流协作.md)。
 
 ## 安装
 
@@ -68,7 +68,7 @@ flowchart LR
 | 作者日常推荐的完整工程组合 | `recommended` | `own` 加完整日常工程、回答复核、调研、审查、文档、界面与 Git 防护 Skill |
 | 与作者当前筛选后的可用 Skill 集合一致 | `all` | 56 个可加载 Skill；另有明确排除的工作区产物、占位模板和观察中的上游 Skill |
 
-`skills/` 是本仓库唯一的自有发布内容：每个子目录都包含标准的 `SKILL.md`。未特别指定时，复制自有内容时安装的是不含 `evals/` 的使用版；只有维护、修改或评测 Skill 时才保留完整目录。运行时需要的引用文件仍会随使用版安装。`recommended` 和 `all` 中的上游内容不在本仓库复制，应从各自官方渠道安装。三档的完整清单、排除项和来源见 [docs/curated-tiers.md](docs/curated-tiers.md)。仓库不假设所有 Agent 使用同一种插件系统，也不提供冒充通用方案的安装脚本。
+`skills/` 是本仓库唯一的自有发布内容：每个子目录都包含标准的 `SKILL.md`。未特别指定时，复制自有内容时安装的是不含 `evals/` 的使用版；只有维护、修改或评测 Skill 时才保留完整目录。运行时需要的引用文件仍会随使用版安装。`recommended` 和 `all` 中的上游内容不在本仓库复制，应从各自官方渠道安装。三档的完整清单、排除项和来源见 [docs/分层清单.md](docs/分层清单.md)。仓库不假设所有 Agent 使用同一种插件系统，也不提供冒充通用方案的安装脚本。
 
 请选择你的 Agent 支持的方式：
 
@@ -76,25 +76,25 @@ flowchart LR
 2. **个人全局安装**：复制所需的使用版文件到 Agent 的用户级 Skill 目录。适合个人复用，但具体目录和加载规则必须以该 Agent 当前文档为准。
 3. **原生市场或插件系统**：当某个 Agent 支持从 Git 仓库、插件市场或注册表安装时，优先使用该 Agent 的原生方式。它能处理更新、权限和卸载，不需要本仓库替它猜目录。
 
-常见 Agent 的可行方式、复制示例和更新原则在 [docs/installation.md](docs/installation.md)。先安装一个 Skill 并在真实请求中验证其是否被发现；选择 `recommended` 或 `all` 时，再按其清单逐项扩展。
+常见 Agent 的可行方式、复制示例和更新原则在 [docs/安装与更新.md](docs/安装与更新.md)。先安装一个 Skill 并在真实请求中验证其是否被发现；选择 `recommended` 或 `all` 时，再按其清单逐项扩展。
 
-三档是安装范围参考：[`own`、`recommended`、`all`](docs/curated-tiers.md)。它们不再依赖一个只覆盖少数 Agent 的脚本。
+三档是安装范围参考：[`own`、`recommended`、`all`](docs/分层清单.md)。它们不再依赖一个只覆盖少数 Agent 的脚本。
 
 ## 上游精选
 
 本仓库维护九个原创 Skill，并以 [MIT License](LICENSE) 发布。没有复制第三方 Skill 正文。
 
-上游项目不定义本仓库的产品主体。它们只是为了让使用者按职责补齐或替换工作流能力而记录的兼容性参考。其中 Matt Pocock Skills 的 `grill-with-docs` 和 `research` 是完成相关 Mo 工作流时的默认推荐搭档；其余条目是按需补充，不是“一键全装”套件。每个项目的许可证、目录布局、支持的 Agent 和安装方式各不相同，应从其官方渠道单独安装和更新。来源、许可边界与选择理由见 [docs/source-attribution.md](docs/source-attribution.md)；可参考的来源索引位于 `manifests/`。
+上游项目不定义本仓库的产品主体。它们只是为了让使用者按职责补齐或替换工作流能力而记录的兼容性参考。其中 Matt Pocock Skills 的 `grill-with-docs` 和 `research` 是完成相关 Mo 工作流时的默认推荐搭档；其余条目是按需补充，不是“一键全装”套件。每个项目的许可证、目录布局、支持的 Agent 和安装方式各不相同，应从其官方渠道单独安装和更新。来源、许可边界与选择理由见 [docs/来源与许可.md](docs/来源与许可.md)；可参考的来源索引位于 `manifests/`。
 
 ## 维护与贡献
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)：自有 Skill 的结构、评测和发布规则。
-- [docs/skill-selection.md](docs/skill-selection.md)：按问题选择 Skill 的详细说明。
-- [docs/workflow-philosophy.md](docs/workflow-philosophy.md)：原创 Skill 背后的工作流设计哲学与边界。
-- [docs/workflows.md](docs/workflows.md)：协作关系、人工关口和输出边界。
-- [docs/installation.md](docs/installation.md)：多 Agent 安装与更新策略。
-- [docs/curated-tiers.md](docs/curated-tiers.md)：`own`、`recommended`、`all` 三档内容与选择原则。
-- [docs/source-attribution.md](docs/source-attribution.md)：自有内容与第三方内容的许可边界。
+- [docs/技能选择.md](docs/技能选择.md)：按问题选择 Skill 的详细说明。
+- [docs/工作流设计哲学.md](docs/工作流设计哲学.md)：原创 Skill 背后的工作流设计哲学与边界。
+- [docs/工作流协作.md](docs/工作流协作.md)：协作关系、人工关口和输出边界。
+- [docs/安装与更新.md](docs/安装与更新.md)：多 Agent 安装与更新策略。
+- [docs/分层清单.md](docs/分层清单.md)：`own`、`recommended`、`all` 三档内容与选择原则。
+- [docs/来源与许可.md](docs/来源与许可.md)：自有内容与第三方内容的许可边界。
 
 维护者可执行以下命令检查九个自有 Skill 的结构和来源索引的 JSON 语法：
 

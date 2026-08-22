@@ -48,4 +48,25 @@
 - 结果：`passed | failed | manual | blocked | not-applicable`
 - 覆盖：`证明了什么`
 - 未覆盖：`没有证明什么`
+
+## 跨 Skill handoff 记录
+
+当一个工作项交给另一个 Skill 继续时，至少传递以下字段。字段可以写在现有报告中，不要求额外创建交接文件：
+
+```markdown
+- 来源 Skill：
+- 目标 Skill：
+- 工作项或改动标识：
+- 当前状态：`proposed | executing | awaiting-user | blocked | completed | rejected`
+- 已确认目标：
+- 已有证据：
+- 执行环境：
+- 已覆盖：
+- 未覆盖：
+- 阻塞项：
+- 是否需要用户确认：是 / 否；需要确认什么：
+- 目标 Skill 的下一步：
+```
+
+交接记录只传递目标 Skill 下一步所需的最小事实。上游局部通过不能扩大为阶段通过、正式决定或生产发布；缺失字段应标为“未提供”，不得由下游猜测补齐。
 ```

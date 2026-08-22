@@ -1,24 +1,30 @@
 {
   "schemaVersion": 1,
-  "description": "Complete upstream index: 46 upstream Skills plus 9 owned Skills. It records a curated, reproducible selection rather than a mechanical merge of every available Skill directory.",
+  "description": "Complete upstream index: 47 upstream Skills plus 9 owned Skills. It records a curated selection rather than a mechanical merge of every available Skill directory.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
-      "skills": ["ask-matt", "check", "code-review", "codebase-design", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "health", "hunt", "implement", "improve-codebase-architecture", "learn", "prototype", "read", "research", "setup-matt-pocock-skills", "tdd", "teach", "think", "to-spec", "to-tickets", "triage", "ui", "wayfinder", "webapp-testing", "write", "writing-great-skills"]
+      "skills": ["ask-matt", "code-review", "codebase-design", "diagnosing-bugs", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "implement", "improve-codebase-architecture", "prototype", "research", "resolving-merge-conflicts", "git-guardrails-claude-code", "setup-matt-pocock-skills", "tdd", "teach", "to-spec", "to-tickets", "triage", "wayfinder"]
     },
     {
       "source": "https://github.com/anthropics/skills",
-      "skills": ["algorithmic-art", "brand-guidelines", "canvas-design", "discernment-nudge", "docx", "frontend-design", "mcp-builder", "pdf", "pptx", "skill-creator", "theme-factory", "web-artifacts-builder", "xlsx"]
-    },
-    {
-      "source": "https://github.com/wshobson/agents",
-      "skills": ["diagnosing-bugs", "doc-coauthoring", "git-guardrails-claude-code", "resolving-merge-conflicts"]
+      "skills": ["algorithmic-art", "brand-guidelines", "canvas-design", "discernment-nudge", "doc-coauthoring", "docx", "frontend-design", "mcp-builder", "pdf", "pptx", "skill-creator", "theme-factory", "web-artifacts-builder", "webapp-testing", "xlsx"]
     },
     {
       "source": "https://github.com/yetone/kill-ai-slop",
       "skills": ["kill-ai-slop"],
       "license": "Apache-2.0",
       "install_path": "skill/"
+    },
+    {
+      "source": "https://github.com/alchaincyf/huashu-design",
+      "skills": ["huashu-design"],
+      "license": "MIT"
+    },
+    {
+      "source": "https://github.com/tw93/Waza",
+      "skills": ["check", "health", "hunt", "learn", "read", "think", "ui", "write"],
+      "license": "MIT"
     }
   ],
   "excluded_from_selection": [

@@ -4,21 +4,27 @@
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
-      "skills": ["ask-matt", "check", "code-review", "codebase-design", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "health", "hunt", "implement", "improve-codebase-architecture", "learn", "prototype", "read", "research", "tdd", "teach", "think", "to-spec", "to-tickets", "triage", "ui", "wayfinder", "webapp-testing", "write"]
+      "skills": ["ask-matt", "code-review", "codebase-design", "diagnosing-bugs", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "implement", "improve-codebase-architecture", "prototype", "research", "resolving-merge-conflicts", "git-guardrails-claude-code", "tdd", "teach", "to-spec", "to-tickets", "triage", "wayfinder"]
     },
     {
       "source": "https://github.com/anthropics/skills",
-      "skills": ["discernment-nudge"]
-    },
-    {
-      "source": "https://github.com/wshobson/agents",
-      "skills": ["doc-coauthoring", "git-guardrails-claude-code", "resolving-merge-conflicts"]
+      "skills": ["discernment-nudge", "doc-coauthoring", "webapp-testing"]
     },
     {
       "source": "https://github.com/yetone/kill-ai-slop",
       "skills": ["kill-ai-slop"],
       "license": "Apache-2.0",
       "install_path": "skill/"
+    },
+    {
+      "source": "https://github.com/alchaincyf/huashu-design",
+      "skills": ["huashu-design"],
+      "license": "MIT"
+    },
+    {
+      "source": "https://github.com/tw93/Waza",
+      "skills": ["check", "health", "hunt", "learn", "read", "think", "ui", "write"],
+      "license": "MIT"
     }
   ]
 }
