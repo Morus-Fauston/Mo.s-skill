@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.5.1 (2026-08-23 04:48)
+
+### 新增
+
+- **上游写作与操作能力**：将 Matt Pocock Skills 的 `loop-me`、`setup-pre-commit`、`wizard`、`writing-beats`、`writing-fragments` 和 `writing-shape` 纳入 `all` 精选来源索引，补齐人工操作向导、提交前检查和写作工作流能力。
+
+### 调整
+
+- **精选集合扩展**：将 `all` 从 56 个可加载 Skill 更新为 62 个，其中上游 Skill 从 47 个增加到 53 个。
+- **安装说明同步**：同步三档安装范围中的 `all` 数量，避免安装说明与精选清单不一致。
+- **来源说明同步**：扩展 Matt Pocock Skills 的职责描述，覆盖人工操作向导和写作工作流。
+
+### 文件变更表
+
+| 文件 | 变更 |
+|:-----|:------|
+| `manifests/all-used.json` | 将 6 个 Matt Pocock Skills 纳入 `all` 精选来源索引，并更新上游数量说明 |
+| `docs/分层清单.md` | 同步 `all` 的 Skill 数量、明细和排除说明 |
+| `docs/安装与更新.md` | 将 `all` 的可加载 Skill 数量从 56 更新为 62 |
+| `docs/来源与许可.md` | 补充 Matt Pocock Skills 覆盖人工操作向导和写作工作流 |
+
+---
+
 ## v0.5.0 (2026-08-23 03:55)
 
 ### 调整

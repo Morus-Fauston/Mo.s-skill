@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "description": "Complete upstream index: 47 upstream Skills plus 9 owned Skills. It records a curated selection rather than a mechanical merge of every available Skill directory.",
+  "description": "Complete upstream index: 53 upstream Skills plus 9 owned Skills. It records a curated selection rather than a mechanical merge of every available Skill directory.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
-      "skills": ["ask-matt", "code-review", "codebase-design", "diagnosing-bugs", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "implement", "improve-codebase-architecture", "prototype", "research", "resolving-merge-conflicts", "git-guardrails-claude-code", "setup-matt-pocock-skills", "tdd", "teach", "to-spec", "to-tickets", "triage", "wayfinder"]
+      "skills": ["ask-matt", "code-review", "codebase-design", "diagnosing-bugs", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "implement", "improve-codebase-architecture", "loop-me", "prototype", "research", "resolving-merge-conflicts", "git-guardrails-claude-code", "setup-matt-pocock-skills", "setup-pre-commit", "tdd", "teach", "to-spec", "to-tickets", "triage", "wayfinder", "wizard", "writing-beats", "writing-fragments", "writing-shape"]
     },
     {
       "source": "https://github.com/anthropics/skills",

@@ -1,3 +1,9 @@
+v0.5.1 (2026-08-23 04:48)
+  新增: 纳入 loop-me、setup-pre-commit、wizard、writing-beats、writing-fragments、writing-shape 六个 Matt Pocock Skills
+  调整: all 从 56 个扩展为 62 个可加载 Skill / 上游从 47 个扩展为 53 个 / 同步分层、安装和来源说明
+
+====
+
 v0.5.0 (2026-08-23 03:55)
   调整: 重新核对并修正上游 Skill 来源 / 移除无法核验的 writing-great-skills 和未采用的 wshobson/agents
   调整: 重索引 Waza 的 check、health、hunt、learn、read、think、ui、write，不新增 Skill 内容
