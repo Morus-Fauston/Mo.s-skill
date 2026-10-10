@@ -1,5 +1,45 @@
 # Changelog
 
+## v0.6.0 (2026-10-10 12:33)
+
+### 新增
+
+- **仓库文档初始化 Skill**：新增 `repository-docs-bootstrap`，从目标仓库现有文档、目录、配置和 Agent 约定提取事实，生成本地化的文档治理初始化方案与检查清单。
+- **MTP 默认治理骨架**：提供 `README.md`、`AGENTS.md`、`CONTEXT.md`、`Docs/当前决策/`、`Docs/ADR/`、`Docs/Research/`、`Docs/工作流/`、`Docs/验证反馈/`、`agents/` 和 `.scratch/` 的建立规则，并把 `records/`、`plans/`、`meetings/`、产品域和证据目录作为按事实启用的扩展。
+- **Research 本地命名机制**：要求先从目标仓库建立类别表和主来源映射，再使用稳定类别代号、三位序号和中文主题命名；普通主题与文件名使用中文，产品名、平台名、库名、协议名、API 名和代码符号等专有名词保留原文，并提供 `SYS-001-WinUI窗口透明合成与透明度丢失机制调研.md` 等示例。
+- **ADR 与 Agent 工作流参考**：补充中文 ADR 命名、决策边界、`AGENTS.md` 中个人惯用 Skill 路由，以及事实、决定、规格、执行和验收之间的转交规则。
+- **票据与证据治理**：提供 `.scratch` 期次/功能目录、中文票据契约、`ready-for-agent` 到 `archived` 的状态机、失败返工、范围调整、封存重启、连续执行授权和跨 Agent 交接规则，并区分自动化、进程/端到端、真实环境和人工证据。
+- **隐私边界与初始化评测**：增加私有仓库初始化的脱敏约束，禁止把个人信息、凭据、设备信息、私有业务内容和本机绝对路径写入可发布文档；新增治理骨架、Research 分类和隐私边界评测用例。
+
+### 调整
+
+- **自有 Skill 清单**：纳入 `repository-docs-bootstrap` 后，自有 Skill 从 9 个更新为 10 个，`recommended` 从 43 个更新为 44 个，`all` 从 62 个更新为 63 个。
+- **仓库导航与工作流说明**：同步 README、分层清单、安装与更新、Skill 选择、工作流协作、工作流设计哲学、来源与许可及共享维护契约中的 Skill 数量、入口和协作关系。
+- **许可证署名**：将版权主体从 `Mo` 更正为 `Morus-Fauston`。
+
+### 文件变更
+
+| 文件 | 变更 |
+|:-----|:------|
+| `skills/repository-docs-bootstrap/SKILL.md` | **新增** — 仓库文档治理初始化入口 |
+| `skills/repository-docs-bootstrap/references/governance-baseline.md` | **新增** — MTP 默认骨架、Research 命名、ADR 和 Agent 工作流参考 |
+| `skills/repository-docs-bootstrap/references/reproduction-manifest.md` | **新增** — 文档、票据、证据和扩展模块复现清单 |
+| `skills/repository-docs-bootstrap/references/ticket-governance.md` | **新增** — 票据状态、证据和交接基线 |
+| `skills/repository-docs-bootstrap/references/bootstrap-checklist.md` | **新增** — 初始化检查清单 |
+| `skills/repository-docs-bootstrap/agents/openai.yaml` | **新增** — Skill 入口元数据 |
+| `skills/repository-docs-bootstrap/evals/evals.json` | **新增** — Skill 评测用例 |
+| `README.md` | **调整** — 纳入第十个自有 Skill 及入口说明 |
+| `docs/adr/0001-共享契约与独立Skill.md` | **调整** — 同步自有 Skill 数量 |
+| `docs/分层清单.md` | **调整** — 同步三档清单和新增 Skill |
+| `docs/安装与更新.md` | **调整** — 同步安装数量和组合说明 |
+| `docs/工作流协作.md` | **调整** — 增加文档初始化入口 |
+| `docs/工作流设计哲学.md` | **调整** — 同步自有 Skill 总数 |
+| `docs/技能选择.md` | **调整** — 增加 `repository-docs-bootstrap` 选择项 |
+| `docs/来源与许可.md` | **调整** — 同步自有 Skill 数量 |
+| `manifests/all-used.json` | **调整** — 更新可加载 Skill 清单 |
+| `LICENSE` | **调整** — 更新版权主体署名 |
+
+---
 ## v0.5.1 (2026-08-23 04:48)
 
 ### 新增

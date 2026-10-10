@@ -1,0 +1,82 @@
+{
+  "skill_name": "repository-docs-bootstrap",
+  "evals": [
+    {
+      "id": "localize-taxonomy",
+      "prompt": "一个已有源码、测试和 Docs 目录的仓库想参考 MoMA/MTP 建立文档体系。请先盘点并提出本仓库自己的分类和主来源映射，不要直接复制 ENG/CODE/ECO/ARC/UX。",
+      "expected_output": "先读取仓库入口和现有文档，给出基于实际模块的分类、反例边界、唯一主来源和未决项，并在没有确认前不批量改名或删除历史文档。",
+      "expectations": [
+        "区分参考项目的启发与目标仓库的本地分类",
+        "包含事实基线、主来源映射和未决问题",
+        "明确保留历史材料并避免创建空占位文档"
+      ]
+    },
+    {
+      "id": "agents-workflow",
+      "prompt": "请为一个新仓库初始化 AGENTS.md 中的文档和 Skill 工作流。仓库可用 grilling、research-brief、decision-to-spec、evidence-based-validation、phase-acceptance、docs-integrity-audit 和 check。",
+      "expected_output": "按问题选择主 Skill，写出转交关系和人工确认门，并把研究交付、结论采纳、测试通过、真实环境通过和 Git 写入分开。",
+      "expectations": [
+        "不把所有 Skill 串成强制流水线",
+        "保留用户确认、真实环境和权限边界",
+        "区分文档审计与决策同步、研究和验收"
+      ]
+    },
+    {
+      "id": "existing-docs-boundary",
+      "prompt": "仓库已经有当前决策、Research、ADR、工作流和本地验证证据。请判断初始化时哪些目录应补 README，哪些不应复制实时状态。",
+      "expected_output": "按用途检查现有入口，只补缺失导航、命名和责任说明；明确唯一主来源、派生引用、私有边界和历史材料，不创建重复汇总报告。",
+      "expectations": [
+        "检查现有目录和状态后再编辑",
+        "明确 Research 的交付/审阅/采纳边界",
+        "不把本地验证摘要冒充原始证据或当前决策"
+      ]
+    },
+    {
+      "id": "full-governance-scaffold",
+      "prompt": "新建一个代码仓库，希望快速复现既有 Mo's 仓库的治理结构，包括根目录重要文件、Docs、ADR、Research、工作流、Agent 约定、验证反馈、历史迁移和本地工作台。请执行完整初始化。",
+      "expected_output": "按完整治理基线创建有入口内容的文件骨架，记录哪些文件新建/补强/不适用；Research 分类从目标仓库事实生成；写入初始化报告，不复制 MoMA/MTP 的业务内容。",
+      "expectations": [
+        "明确 full-governance 模式和完整文件角色",
+        "以 MTP 文档治理为默认范式，其他项目机制只作为按需扩展",
+        "包含 Docs/ADR/Research/工作流/agents/.scratch 等入口",
+        "根据需要包含 records、plans、meetings、产品域和期次 goals、证据池或文档治理入口",
+        "不覆盖已有文件，不伪造许可证、决策或研究报告",
+        "输出初始化报告和后续维护责任"
+      ]
+    },
+    {
+      "id": "chinese-research-naming",
+      "prompt": "新仓库要求 ADR 和 Research 文件名全部使用中文，专有名词可以保留原文。请设计 Research 命名制度并给出一个任务书/报告配对示例，同时把我惯用的 Skill 工作流写入 AGENTS.md 参考段落。",
+      "expected_output": "定义类别代号、类别内递增编号、中文主题、专有名词例外、任务书报告配对、交付/审阅/采纳状态，并给出符合规则的完整文件名示例和可复制的 AGENTS.md Skill 工作流段落。",
+      "expectations": [
+        "主题和普通文件名使用中文，专有名词保留原文",
+        "明确编号不按版本、轮次或 Agent 分配",
+        "区分交付、审阅和采纳状态",
+        "工作流包含 grilling、research、decision-to-spec、验证、验收、审计和 Git 确认边界"
+      ]
+    },
+    {
+      "id": "ticket-governance",
+      "prompt": "请把我常用的本地票据体系复现到新仓库：版本或功能目录、issues、evidence、work、中文票据文件名、依赖和状态头部、Checklist、人工验收、封存和正式 Docs 边界。",
+      "expected_output": "创建或补充票据管理规范，定义目录、票据头部、六态状态机、依赖和领取规则、Checklist 与证据契约、期次 README 导航、交接和正式文档边界。",
+      "expectations": [
+        "明确票据头部是单票状态唯一来源",
+        "区分 ready-for-agent、in-progress、awaiting-human、blocked、completed、archived",
+        "要求 completed 的 Checklist 和验收记录完整",
+        "区分失败返工、范围调整、封存重启和连续执行授权边界",
+        "区分 .scratch 执行材料与正式 Docs、Research、ADR",
+        "票据文件名和正文默认使用中文"
+      ]
+    },
+    {
+      "id": "privacy-boundary",
+      "prompt": "请把 MTP 文档治理复现到新仓库。LICO 和 Eternal Shrine 只能作为私有参考项目，输出可以提到项目名，但不得泄露个人姓名、联系方式、账号、设备信息、密钥、私有业务内容或本机绝对路径。",
+      "expected_output": "以 MTP 为主骨架，引用其他项目时只抽象治理机制，并在初始化报告记录隐私检查和未复制内容。",
+      "expectations": [
+        "MTP 是默认骨架而不是与其他项目并列模板",
+        "明确私有项目只作为机制来源标签",
+        "不输出个人信息、凭据、私有业务数据或本机绝对路径"
+      ]
+    }
+  ]
+}

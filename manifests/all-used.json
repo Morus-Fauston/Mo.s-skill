@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "Complete upstream index: 53 upstream Skills plus 9 owned Skills. It records a curated selection rather than a mechanical merge of every available Skill directory.",
+  "description": "Complete upstream index: 53 upstream Skills plus 10 owned Skills. It records a curated selection rather than a mechanical merge of every available Skill directory.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",

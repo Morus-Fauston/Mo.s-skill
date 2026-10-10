@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Docs Bootstrap"
+  short_description: "Initialize repository-local documentation governance"
+  default_prompt: "Use $repository-docs-bootstrap to inspect this repository and propose or initialize its local documentation governance."

@@ -1,3 +1,18 @@
+v0.6.0 (2026-10-10 12:33)
+  新增: repository-docs-bootstrap 仓库文档初始化 Skill
+  - 以 MTP 为默认范式建立 README、AGENTS、CONTEXT、Docs、ADR、Research、工作流、验证反馈、agents 和 .scratch 骨架
+  - Research 按目标仓库本地化分类，类别代号和序号稳定，主题与普通文件名使用中文，专有名词保留原文
+  - 提供 ADR、AGENTS.md Skill 路由、票据状态机、证据分层、失败返工、范围调整、交接和隐私边界规则
+  - 增加初始化清单与治理、Research、隐私评测
+  调整: 同步仓库导航和 Skill 清单
+  - 自有 Skill 9→10 | recommended 43→44 | all 62→63
+  - 更新 README、docs、manifests/all-used.json 的入口、数量和协作关系
+  调整: 许可证署名从 Mo 更正为 Morus-Fauston
+
+====
+
+====
+
 v0.5.1 (2026-08-23 04:48)
   新增: 纳入 loop-me、setup-pre-commit、wizard、writing-beats、writing-fragments、writing-shape 六个 Matt Pocock Skills
   调整: all 从 56 个扩展为 62 个可加载 Skill / 上游从 47 个扩展为 53 个 / 同步分层、安装和来源说明
