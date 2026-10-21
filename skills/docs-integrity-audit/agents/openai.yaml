@@ -1,0 +1,3 @@
+interface:
+  display_name: "Docs Integrity Audit"
+  short_description: "Audit documentation links, indexes, and status drift"

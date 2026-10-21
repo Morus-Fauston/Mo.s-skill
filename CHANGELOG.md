@@ -1,5 +1,154 @@
 # Changelog
 
+## v0.9.0 (2026-10-20 23:36)
+
+### 新增
+
+- **SAT 提交员专版**：新增 sat-changelog-writer，独立于个人版维护。
+  - 主管确定版本、批次与写入范围；Changelog 和具体提交差异仅交主管审阅，不增加独立审阅员。
+  - 明确批准后内容变化、混杂暂存、同仓库串行、本地核对后解冻及原 commit 推送跟踪。
+  - 项目规范优先；无对应规范时沿用双日志及 TXT 完整区块提交信息。
+- **评测场景**：新增 11 个场景、46 条期望，覆盖授权、审阅、索引污染和推送结果不明等边界。
+
+### 文档
+
+- **入口说明**：README 更新为十个个人版和一个 SAT 专版，区分角色限定、确认门与分发边界。
+
+### 文件变更表
+
+| 文件 | 变更 |
+|:-----|:-----|
+| skills/sat-changelog-writer/SKILL.md | 新增提交员行为契约 |
+| skills/sat-changelog-writer/references/changelog-format.md | 新增独立默认格式 |
+| skills/sat-changelog-writer/evals/evals.json | 新增评测场景库 |
+| README.md | 更新数量、入口和适用边界 |
+
+### 已知问题
+
+- 场景库尚无可执行 runner，未取得模型行为评测结果。
+
+### 待完成
+
+- SAT 定向加载、业务入口和隔离环境验证尚未实施，需后续授权。
+
+### 刻意不做
+
+- 不修改个人版，不安装 Skill，不实现 SAT 工具或预设。
+- 本轮只完成正文、契约和场景；静态检查不作为端到端通过证据。
+
+---
+
+## v0.8.0 (2026-10-20 22:53)
+
+### 破坏性变更
+
+- **四个 Skill 改为仅用户可调用**：`repository-docs-bootstrap`、`skill-workflow-orchestrator`、`interaction-prototype-to-spec`、`skill-workflow-visualizer` 现在只在你点名或运行斜杠命令时启动，模型不再按意图自动触发。
+  - 迁移：需要这些能力时显式点名 Skill 或运行对应斜杠命令；原来依赖自动转交的用法，改由你手动发起。
+  - 原因：它们会一次创建几十个文件、产生「删哪个 Skill」这类元决策、需要你先体验原型，或者本身就是给人看的分析工具。
+
+### 新增
+
+- **调用分档**：每个 Skill 增加 `agents/openai.yaml`，写入 `interface.display_name` 与 `interface.short_description`；四个仅手动 Skill 同时写入 `policy.allow_implicit_invocation: false`，并在 frontmatter 加 `disable-model-invocation: true`，让 Claude Code 与 Codex 表现一致。
+- **画图判据**：`skill-workflow-visualizer` 增加「画图时机与分层」，明确什么情况值得画图、不值得画图，总览层与单 Skill 层如何分开，以及单张图节点上限 7 个。
+- **状态复杂度判据**：`interaction-prototype-to-spec` 增加「什么算复杂状态」四条判据（状态数 ≥4、有权限分支、有异步过程、有并发冲突）；四条都不成立时只用 `ui`，不引入 `prototype`。
+
+### 调整
+
+- **报告默认不落盘**：六个 Skill 的报告改为默认在对话中交付结论，只有用户明确要求，或项目已有记录目录时才写文件；路径固定为 `.scratch/reports/<skill>/<YYYY-MM-DD>-<主题>.md`。六处模板正文合计从 211 行压缩到 103 行。
+- **转交句改写**：12 处指向仅手动 Skill 的转交改为「提醒用户自行运行」，避免在正文里画出不存在的自动链路。
+- **描述改写**：四个仅手动 Skill 的 `description` 改为面向人的一句话说明，去掉触发词列表；保持自动触发的六个 Skill 保留原触发描述。
+
+### 技术
+
+- `README.md` 增加「调用」列和「调用方式」一节，说明哪些 Skill 需要手动启动及原因。
+
+### 文件变更
+
+| 文件 | 变更 |
+|:-----|:------|
+| `README.md` | **调整** — 增加调用分档与报告默认行为说明 |
+| `skills/*/SKILL.md` | **调整** — 调用分档、报告精简、判据补充与转交句改写 |
+| `skills/*/agents/openai.yaml` | **新增** — 十个 Skill 的 Codex 界面元数据；四个含 `policy` 块 |
+| `CHANGELOG.md`、`CHANGELOG.txt` | **调整** — 记录 v0.8.0 |
+
+### 已知问题
+
+- 无。
+
+### 待完成
+
+- **报告骨架仍偏长**：六处模板合计 103 行（每处 15 至 19 行），其中约一半是表格结构。若要进一步压到每处 8 至 10 行，需要把表格改成字段列表，尚未决定。
+- `evals/` 仍无可执行 runner：它是评测场景库，执行方式为人工或 Agent 复核。
+
+### 刻意不做
+
+- **不为四个仅手动 Skill 提供自动降级**：如果某个 Agent 不支持 `disable-model-invocation`，它仍可能被自动触发；这是 harness 能力差异，不通过改 Skill 正文来兜底。
+- **不引入第三方文档审计脚本**：依赖未在本机验证的运行时，且上游逐 Skill 许可未核实。
+- **不新增 Skill**：本轮只做调用分档、正文减负与判据补齐。
+
+---
+
+## v0.7.0 (2026-10-20 22:29)
+
+### 调整
+
+- **仓库结构收敛**：删除 `docs/`、`scripts/`、`manifests/`、`.github/`、`CONTRIBUTING.md`、`CONTEXT.md`，仓库只保留 `README.md`、`LICENSE`、双格式更新日志和 `skills/`。README 重写为单页入口，保留十个 Skill 的选择表、共同原则和安装方式。
+- **共享维护契约移除**：删除 `skills/_shared/references/` 下的工作上下文、证据状态和确认门三份参考；九个 `SKILL.md` 的维护参考行改为自包含声明，`repository-docs-bootstrap` 补齐 `## 完成条件与上下文摘要` 结构。
+
+### 修复
+
+- **悬空转交**：`phase-acceptance` 与 `evidence-based-validation` 中对不存在的 `qa` Skill 的转交，改为项目既有的 issue、待办或缺陷登记流程。
+- **状态档位缺失**：`decision-to-spec` 的同步状态从「完成 / 部分完成 / 阻塞」三档补齐为四档，增加「不通过」。
+- **内容重复**：`changelog-writer` 正文与 `references/changelog-format.md` 重复的两份日志模板和写作规则删除，改为指向参考文件；`repository-docs-bootstrap` 中复述 references 的九条目录角色压缩为三条原则。
+- **主入口竞争**：`docs-integrity-audit` 与 `repository-docs-bootstrap` 补齐双向排除句，明确 `adopt-existing` 只补缺失主来源与入口，不做全面审计。
+
+### 新增
+
+- **内容三分判据**：`skill-workflow-orchestrator` 增加 Expert / Activation / Redundant 三分检查表和四条判定要求，精简候选必须逐段给出 Skill 名、行号和归类。
+- **决策记录质量条件**：`decision-to-spec` 增加三条最低质量条件，即负向后果不可为空、被否决方案必须写出最强支持理由、记录先于引用。
+- **更新日志诚实惯例**：`references/changelog-format.md` 增加「已知问题」「待完成」「刻意不做」三段及其纯文本压缩形式；`changelog-writer` 要求破坏性变更置于版本条目首位并写明迁移动作。
+- **审计退出码语义**：`docs-integrity-audit` 增加项目已有检查命令时 0、1、2 三种退出码的解读规则，并规定未运行机械检查时不能写「通过」。
+
+### 技术
+
+- **评测用例规范化**：`evals.json` 的 id 统一为 kebab-case 字符串；`repository-docs-bootstrap` 的七条用例补齐 `files` 字段。
+- **元数据清理**：删除 `repository-docs-bootstrap/agents/openai.yaml`。它是十个 Skill 中唯一的 Codex 界面元数据，其余九个没有，保留会造成结构不一致。
+
+### 文件变更
+
+| 文件 | 变更 |
+|:-----|:------|
+| `README.md` | **重写** — 单页入口，含十个 Skill 选择表、共同原则与安装方式 |
+| `.gitignore` | **调整** — 移除已删除路径的忽略规则 |
+| `CONTEXT.md` | **删除** — 术语表随仓库结构收敛移除 |
+| `CONTRIBUTING.md` | **删除** — 贡献规则由 README 与各 `SKILL.md` 承接 |
+| `docs/`（7 个文档与 ADR） | **删除** — 不再随仓库分发 |
+| `scripts/validate.ps1` | **删除** — 校验脚本不再随仓库分发 |
+| `manifests/recommended.json`、`manifests/all-used.json` | **删除** — 上游来源索引不再随仓库分发 |
+| `.github/copilot-instructions.md` | **删除** — 引用已删除的校验脚本 |
+| `skills/_shared/references/`（3 个文件） | **删除** — 共享契约改为各 Skill 自包含 |
+| `skills/repository-docs-bootstrap/agents/openai.yaml` | **删除** — 唯一的 Codex 界面元数据 |
+| `skills/*/SKILL.md` | **调整** — 自包含声明、判定判据、边界句与转交修正 |
+| `skills/changelog-writer/references/changelog-format.md` | **调整** — 三段诚实惯例与纯文本压缩形式 |
+| `skills/*/evals/evals.json` | **调整** — id 规范与字段补齐 |
+
+### 已知问题
+
+- 无。
+
+### 待完成
+
+- 仍无可执行评测 runner：`evals/` 是评测场景库，执行方式为人工或 Agent 复核，尚无自动回归。
+
+### 刻意不做
+
+- **不引入第三方文档审计脚本**：依赖未在本机验证的运行时，且上游逐 Skill 许可未核实。
+- **不把四个 Skill 的报告模板外移到 `references/`**：会改变使用版安装边界，留待结构稳定后单独评估。
+- **不新增 Skill**：本次只做收敛与判据补齐，不扩大集合。
+- **不删除 `evals/`**：它是每个 Skill 的质量证据，不属于介绍性文档。
+
+---
+
 ## v0.6.0 (2026-10-10 12:33)
 
 ### 新增

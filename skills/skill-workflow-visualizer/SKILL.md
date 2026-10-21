@@ -1,6 +1,7 @@
 ---
 name: skill-workflow-visualizer
-description: "将一组 Agent Skill 的真实触发条件、自动步骤、人工确认关口、相邻 Skill 转交规则和最终产物整理成可审阅的 Markdown 与 Mermaid 工作流图。用户说‘梳理 Skill 工作流’、‘Skill 怎么串联’、‘画 Skill 流程图’、‘Skill 触发图’、‘检查这些 Skill 是否更新后变了’、‘把我的 Agent 工作流可视化’，或要求根据跨项目对话历史找出常用 Skill、常用编排与重复工作时，务必使用本 Skill。默认只读分析；需要据此重编排、精简或创建新 Skill 时转 `skill-workflow-orchestrator`，不修改被分析 Skill 的正文。"
+description: "把一组 Skill 的真实触发、自动步骤、人工关口和转交规则整理成可审阅的选择表与 Mermaid 工作流图。只在你主动调用时运行；默认只读，不修改被分析的 Skill。"
+disable-model-invocation: true
 ---
 
 # Skill 工作流可视化
@@ -9,10 +10,10 @@ description: "将一组 Agent Skill 的真实触发条件、自动步骤、人�
 
 ## 完成条件与上下文摘要
 
-- 维护参考：`skills/_shared/references/work-item-contract.md`、`skills/_shared/references/evidence-status.md`。
+- 本 Skill 自包含：触发、边界、完成条件和最小交接摘要都在本文件内，不依赖仓库其他目录。
 - 完成条件：分析范围、触发条件、前提、自动步骤、人工关口、输出、转交关系和未核实项都有正文证据。
 - 同一上下文继续重编排时直接复用可视化结果；只有跨 Agent、跨会话或长期留档时，才摘要范围、已读取 Skill、证据、路由发现、未决问题和下一步。
-- 需要精简、合并或改造时，把事实基线交给 `skill-workflow-orchestrator`，不直接改被分析的 Skill。
+- 需要精简、合并或改造时，把事实基线整理成可交接的输入交给用户，并提醒用户自行运行 `/skill-workflow-orchestrator`；本 Skill 不直接改被分析的 Skill。
 
 ## 适用边界
 
@@ -22,7 +23,7 @@ description: "将一组 Agent Skill 的真实触发条件、自动步骤、人�
 - Skill 名称相同不等于重复。先确认它们是否属于不同 Agent 的同步副本；只分析同一 Agent 内的触发重叠。
 - 不把 Skill 中的“推荐后续动作”画成自动执行。只有明确的工具调用或用户授权才可画为自动链路。
 - 只有用户明确要求分析跨项目使用模式时，才读取可访问的跨项目对话历史或会话统计；不得把当前项目的工作流文档、聊天记录或用户目录当作默认历史来源。
-- 历史分析只输出聚合模式与证据边界。它不作保留、删除、主入口或新 Skill 决定；所有重编排问题转 `skill-workflow-orchestrator`。
+- 历史分析只输出聚合模式与证据边界。它不作保留、删除、主入口或新 Skill 决定；所有重编排问题提醒用户运行 `/skill-workflow-orchestrator`。
 
 ## 1. 建立分析范围
 
@@ -57,7 +58,7 @@ description: "将一组 Agent Skill 的真实触发条件、自动步骤、人�
 1. 说明可访问的项目、时间范围、可用字段和无法读取的历史。
 2. 只提取聚合信号：显式请求或触发次数、常见起始问题、相邻 Skill 的先后关系、反复出现的确认关口、重复工作与反复改道。
 3. 将历史观察与当前 `SKILL.md`、项目规则或现行工作流文档中的事实分开记录。
-4. 用户要求重编排、精简或发现新 Skill 候选时，将事实基线和聚合信号转交给 `skill-workflow-orchestrator`。
+4. 用户要求重编排、精简或发现新 Skill 候选时，把事实基线和聚合信号整理成可交接的输入，提醒用户自行运行 `/skill-workflow-orchestrator`。
 
 不得导出无关对话内容、私人文本、凭据或跨项目业务细节。报告只保留完成工作流判断所需的最小聚合信息；用户没有要求落盘时，在对话中交付。
 
@@ -130,9 +131,23 @@ flowchart TD
 - 与当前事实不一致或无法确认的项：
 ```
 
-历史统计不应替代“范围与依据”中的当前 Skill 证据。图中只画经当前 Skill 正文或项目规则证实的关系；需要据此改动工作流时，转 `skill-workflow-orchestrator`。
+历史统计不应替代“范围与依据”中的当前 Skill 证据。图中只画经当前 Skill 正文或项目规则证实的关系；需要据此改动工作流时，提醒用户运行 `/skill-workflow-orchestrator`。
 
 图中节点应短、可读、单一职责。复杂分支拆成两张图，不堆成无法阅读的“大图”。所有用户确认节点必须明确写出“等待用户”。
+
+### 画图时机与分层
+
+不是什么都需要图。先判断：
+
+- **值得画图**：多个 Skill 之间存在条件转交、有多个入口需要在图上区分，或用户要据此决定编排。
+- **不值得画图**：单个 Skill 的内部步骤、纯线性流程，或用户只问某一个 Skill 做什么。用文字回答更快。
+
+分层规则：
+
+1. 总览层：用户问题 → 主入口 → 条件转交，一张图。
+2. 单 Skill 层：只画该 Skill 自己的自动步骤与人工关口，每个 Skill 一张。
+3. 不要把总览和各 Skill 细节塞进同一张图。单张图节点不超过 7 个，超过就按层拆开。
+4. 图中只画当前正文证实的关系：建议用 `-.->`，自动调用用 `-->` 并标注“自动调用”。
 
 ## 6. 检查与更新
 
@@ -154,7 +169,7 @@ flowchart TD
 - `skill-creator`：创建、修改和评测某个 Skill；本 Skill 只解释和可视化多 Skill 协作。
 - `docs-integrity-audit`：审计整个项目文档体系；本 Skill 聚焦 Skill 触发与转交规则。
 - `decision-to-spec`：把已确认产品或架构决定写入正式文档；本 Skill 不把工作流分析自动升级成项目决定。
-- `skill-workflow-orchestrator`：根据本 Skill 的事实基线和历史聚合信号提出重编排、精简与新 Skill 候选；本 Skill 只负责交付这些输入。
+- `skill-workflow-orchestrator`（仅用户可调用）：根据本 Skill 交付的事实基线和历史聚合信号提出重编排、精简与新 Skill 候选。它不是自动转交目标：本 Skill 只负责把输入整理好，并提醒用户自行运行。
 - `research`：调查事实；本 Skill 只在需要确认 Skill 当前行为时读取其本地正文或指定上游来源。
 - 会话历史工具：只在用户明确要求时提供使用模式线索；它不替代当前 Skill 正文、项目规则或用户确认。
 

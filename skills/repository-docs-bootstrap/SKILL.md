@@ -1,6 +1,7 @@
 ---
 name: repository-docs-bootstrap
-description: "为新仓库复现一套可维护的文档治理骨架，并按项目事实本地化分类、命名和 Agent 工作流。用户说初始化仓库文档、复现 Docs/ADR/Research 结构、补 AGENTS.md 或建立项目治理入口时使用；不替代后续审计、决策同步或实际研究。"
+description: "为一个仓库建立本地化的文档治理骨架：分类、主来源、入口文件和 Agent 工作流。只在你主动调用时运行；不负责后续审计、决策同步或实际调研。"
+disable-model-invocation: true
 ---
 
 # 仓库文档初始化
@@ -11,8 +12,9 @@ description: "为新仓库复现一套可维护的文档治理骨架，并按项
 
 默认使用 `full-governance`：补齐根目录关键文件、`Docs` 治理目录、`ADR`、`Research`、工作流、Agent 约定、验证/历史/迁移入口和 `.scratch` 工作台；已有文件只补强或接管，不覆盖。只有用户明确说“只盘点/只提案/只审计”时才使用 `plan-only` 或 `adopt-existing`。完整骨架和每个入口的最低内容见 [governance-baseline.md](references/governance-baseline.md)，可落盘的必选/按需文件清单见 [reproduction-manifest.md](references/reproduction-manifest.md)。
 
-## 完成条件
+## 完成条件与上下文摘要
 
+- 本 Skill 自包含：目标仓库通常没有本仓库其它目录，触发、边界、完成条件和最小交接摘要都在本文件与 `references/` 内。
 - 已读取仓库指令、根 README、领域/术语材料、构建测试入口和现有文档目录；无法访问的材料已标明。
 - 已明确初始化模式，并按基线清单记录每个文件是“已存在并保留”“已补强”“新建”“不适用”还是“等待负责人补充”。
 - `full-governance` 已创建有实际入口内容的治理骨架，不留下只有目录名的空目录。
@@ -81,17 +83,13 @@ description: "为新仓库复现一套可维护的文档治理骨架，并按项
 
 根目录至少处理以下角色：`README.md`、`AGENTS.md`、`CONTEXT.md`、`.gitignore`、许可证文件和版本记录；已有双格式 `CHANGELOG.md`/`CHANGELOG.txt` 时保持一致，只有项目确实需要版本记录时才新建。许可证文本和组织身份不能由 Agent 猜测，缺失时建立待负责人补充项，不写伪造许可证。
 
-治理目录按基线处理：
+治理目录按三条原则处理：
 
-1. 根 `AGENTS.md`：硬约束、开始工作前的阅读入口、推荐 Skill 路由、人工/真实环境关口和验证要求。硬约束应短、可执行、可从仓库事实验证。
-2. `CONTEXT.md` 或等价术语表：稳定领域名词、模块边界和不应混淆的概念；不放临时计划。
-3. `Docs/README.md` 或等价入口：当前决策/规格、Research、ADR、工作流、执行台账和历史边界的导航；只列实际存在的目录。
-4. `Docs/当前决策/`、`Docs/ADR/`、`Docs/Research/`、`Docs/工作流/`：各自有 README；有正式决策总表/未定事项/待办时增加 `records/`，有阶段或角色计划时增加 `plans/`；没有当前材料时写明空状态和进入条件。
-5. `Docs/agents/`：领域约定、票据/工作台规则和 Agent 交接约束；只写仓库实际采用的规则。
-6. `Docs/验证反馈/`、`Docs/待办与预案/`、`Docs/设计资产/`、`Docs/历史规格/`、`Docs/归档/`、`Docs/迁移与记录/`、`Docs/参考资料/`：按基线建立入口，分别说明证据、候选、原型、历史、废弃、迁移和参考资料边界。是否同时启用 `records/`、`plans/`、`meetings/`、产品域 `规格/`、`架构与设计/`、`问题与记录/`、`验收与发布/`，按 [reproduction-manifest.md](references/reproduction-manifest.md) 对照仓库事实判定。
-7. `Docs/工作流/文档治理与手动交接.md`：定义唯一主来源、派生引用、私有材料、交接包和回传证据；不要复制整套实时状态。
-8. `.scratch/README.md` 及其按需的期次/功能目录、`issues/`、`evidence/`、`work/`、`goals/`、`research/`、`tool-cache/`、`证据二进制池/`、`文档治理/` 入口：保存本地执行材料，不替代正式 Docs；目录可通过 README 锚定，避免生成无内容空目录。票据头部、状态机、依赖、Checklist、证据和期次导航必须遵循 [ticket-governance.md](references/ticket-governance.md)。完整文件角色清单见 [reproduction-manifest.md](references/reproduction-manifest.md)。
-9. `Docs/Research/README.md`：先从仓库实际研究对象生成分类、命名格式、编号规则和状态表，再登记现有报告；不把本 Skill 的示例前缀当成默认答案。
+1. **根文件先补**：`AGENTS.md` 只放硬约束、开始工作前的阅读顺序、Skill 路由和人工关口；`CONTEXT.md` 只放稳定术语与模块边界，不放临时计划。
+2. **治理目录按事实启用**：每个目录都要有 `README.md`，写清用途、主要来源、状态词、命名与编号规则、更新责任、不属于本目录的材料和启用条件；没有实际材料时写明空状态，不为它创建空目录。
+3. **执行材料与正式文档分层**：`.scratch` 保存票据、证据和工作文件，不替代正式 Docs；票据契约见 [ticket-governance.md](references/ticket-governance.md)。
+
+具体目录树、每个入口的最低内容和必选/按需文件清单见 [governance-baseline.md](references/governance-baseline.md) 与 [reproduction-manifest.md](references/reproduction-manifest.md)。
 
 如果仓库有多个独立产品域或维护域，在 `Docs/` 或 `docs/` 下按领域建立 `README.md`、`规格/`、`ADR/`、`架构与设计/`、`问题与记录/`、`验收与发布/` 等子入口；根入口必须说明领域文档与全局决策、Research、票据的关系。
 
@@ -105,30 +103,27 @@ description: "为新仓库复现一套可维护的文档治理骨架，并按项
 
 检查当前入口和新增索引的相对链接、目录与文件名、编号配对、状态词、主来源关系、`.gitignore` 边界和 AGENTS 工作流引用。对历史路径与现行路径分开报告。若项目有文档完整性检查或仓库验证命令，运行最小相关检查；否则说明仅做了静态检查。
 
-`full-governance` 还要写入一份初始化记录：优先放入已有的迁移/记录入口，例如 `Docs/迁移与记录/<日期>-文档治理初始化报告.md`；若该目录尚未启用，则在 `Docs/README.md` 中登记报告位置。报告记录基线版本、文件动作、未启用目录、分类依据和未决责任，不复制全部正文、私有项目内容或个人信息。
+`full-governance` 还要写入一份初始化记录。这是本 Skill 的产物，不是可选报告：
 
-交付时使用以下结构：
+- 优先放入目标仓库已有的迁移/记录入口。
+- 该目录尚未启用时，在 `Docs/README.md` 中登记报告位置。
+- 目标仓库连 `Docs/` 都还没有时，写到 `.scratch/reports/repository-docs-bootstrap/<YYYY-MM-DD>-<仓库名>.md`，不再询问路径。
+
+记录只保留最小结构，不复制正文、私有项目内容或个人信息：
 
 ```markdown
 # 仓库文档初始化报告
-
-## 事实基线
-- 仓库类型、领域、运行环境、现有入口、私有边界：
+- 基线版本与生成日期：
+- 仓库类型、领域、现有入口、私有边界：
 
 ## 本地分类与主来源
-| 类别/材料 | 适用内容 | 主来源 | 状态 | 依据 |
-| --- | --- | --- | --- | --- |
+| 类别/材料 | 主来源 | 状态 | 依据 |
 
-## 文件变更
-| 文件 | 动作 | 原因 |
-| --- | --- | --- |
+## 文件动作
+| 文件 | 新建 / 补强 / 保留 / 不适用 | 原因 |
 
-## 检查结果
-- 入口、链接、编号、状态、Skill 路由：
-- 未检查范围：
-
-## 未决与后续责任
-- [需要用户确认、真实环境验证或后续维护的事项]
+## 未启用目录与未决责任
+- 启用条件 / 负责人待补项 / 静态检查未覆盖范围
 ```
 
 ## 按需参考
@@ -138,5 +133,6 @@ description: "为新仓库复现一套可维护的文档治理骨架，并按项
 - 需要把根文件、全局 Docs、产品域和 `.scratch` 组合成明确落盘清单时，读取 [reproduction-manifest.md](references/reproduction-manifest.md)。
 - 需要建立或复现票据、期次、依赖、证据和状态管理时，读取 [ticket-governance.md](references/ticket-governance.md)。
 - 文档系统已经存在、目标是查断链/状态漂移/重复权威来源时，转交 `docs-integrity-audit`。
+- 已有体系且只需查断链、状态漂移和重复权威来源时，不要进入本 Skill 的 `full-governance`；`adopt-existing` 只用于补缺失的主来源、索引和入口，不做全面审计。
 - 已确认的产品或架构结论需要落到正式文档时，转交 `decision-to-spec`。
 - 需要实际查证事实或外包调查时，转交 `research-brief`/`research`；本 Skill 不把参考项目经验当作事实。

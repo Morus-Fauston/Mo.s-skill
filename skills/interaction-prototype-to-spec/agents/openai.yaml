@@ -1,0 +1,5 @@
+interface:
+  display_name: "Interaction Prototype To Spec"
+  short_description: "Turn a tested prototype into an agreed interaction contract"
+policy:
+  allow_implicit_invocation: false

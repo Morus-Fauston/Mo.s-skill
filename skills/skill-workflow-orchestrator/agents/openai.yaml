@@ -1,0 +1,5 @@
+interface:
+  display_name: "Skill Workflow Orchestrator"
+  short_description: "Re-orchestrate, prune, and extend a Skill set"
+policy:
+  allow_implicit_invocation: false

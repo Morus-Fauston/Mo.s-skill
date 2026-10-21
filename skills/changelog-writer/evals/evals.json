@@ -2,7 +2,7 @@
   "skill_name": "changelog-writer",
   "evals": [
     {
-      "id": 1,
+      "id": "draft-pair-and-await-confirmation",
       "prompt": "这次 v0.4.0 做完了。请从上个版本以来的 Git 改动整理 CHANGELOG.md 和 CHANGELOG.txt 草稿，给出版本建议，但先不要写文件、提交或推送。",
       "expected_output": "读取 Git 历史和实际 diff 后给出双更新日志草稿与版本建议，并停在一次性确认环节。",
       "files": [],
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "stage-only-reviewed-files",
       "prompt": "更新日志草稿我确认了。提交 CHANGELOG.md、CHANGELOG.txt 和 app/export.py，别推送。工作区里还有我未完成的 Docs/notes.md 和临时截图，绝对不要带进去。",
       "expected_output": "仅暂存用户明确列出的三份文件并创建提交，不推送，也不使用全工作区暂存命令。",
       "files": [],
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "code-summary-does-not-trigger",
       "prompt": "把这段函数重写过程总结一下，方便我在代码评审里说明。不要写版本记录，也不要碰 Git。",
       "expected_output": "识别为一般代码总结，不触发 changelog-writer。",
       "files": [],
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "no-changes-since-baseline",
       "prompt": "帮我写 v0.4.1 的更新日志；但查完发现从上一个版本起没有任何提交或未提交改动。",
       "expected_output": "说明没有可记录的变化，不创建空版本条目，也不提交或推送。",
       "files": [],

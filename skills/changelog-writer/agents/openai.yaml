@@ -1,0 +1,3 @@
+interface:
+  display_name: "Changelog Writer"
+  short_description: "Draft dual-format changelog and confirm Git actions"

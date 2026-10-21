@@ -1,0 +1,3 @@
+interface:
+  display_name: "Decision To Spec"
+  short_description: "Sync confirmed decisions into the right project documents"

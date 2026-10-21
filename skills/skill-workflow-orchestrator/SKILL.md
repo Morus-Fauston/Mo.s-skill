@@ -1,6 +1,7 @@
 ---
 name: skill-workflow-orchestrator
-description: "根据 Skill 工作流可视化结果、当前 Skill 正文、项目约束，以及用户明确授权时的跨项目使用模式，重编排个人或项目的 Skill 工作流。用户说‘帮我重新编排 Skill 工作流’、‘哪些 Skill 该保留或删掉’、‘我反复做的工作是否值得封装成 Skill’、‘帮我发现缺失工作流’、‘根据我的历史创建新的 Skill 候选’或‘优化我的个人 Skill 系统’时，务必使用本 Skill。它先使用或要求 `skill-workflow-visualizer` 提供事实基线，再提出经用户确认的主入口、转交、精简和新 Skill 候选；只有用户确认创建或改造某个 Skill 后，才转交 `skill-creator`。默认只读，不自动创建、修改、删除、安装或卸载任何 Skill。"
+description: "根据当前 Skill 正文提出工作流重编排方案：指定主入口、补转交、精简冗余项、评估新 Skill 候选。只在你主动调用时运行；默认只读，不创建、修改或删除任何 Skill。"
+disable-model-invocation: true
 ---
 
 # Skill 工作流重编排
@@ -9,16 +10,16 @@ description: "根据 Skill 工作流可视化结果、当前 Skill 正文、项�
 
 ## 完成条件与上下文摘要
 
-- 维护参考：`skills/_shared/references/work-item-contract.md`、`skills/_shared/references/confirmation-gates.md`。
+- 本 Skill 自包含：触发、边界、完成条件和最小交接摘要都在本文件内，不依赖仓库其他目录。
 - 完成条件：主入口、转交、精简和新 Skill 候选都有事实证据、收益、风险和待确认决定；未确认的建议不进入执行。
 - 同一上下文继续修改或评测时直接复用当前方案；只有跨 Agent、跨会话或长期留档时，才摘要事实基线、路由/精简/新 Skill 候选、未决问题和下一步。
 - 用户确认创建或改造 Skill 后，只把候选契约和评测场景交给 `skill-creator`；删除、安装和清单变更仍需单独确认。
 
-它不负责猜测已有 Skill 的行为，也不直接编写新 Skill。前者由 `skill-workflow-visualizer` 完成，后者由 `skill-creator` 完成。
+它不负责猜测已有 Skill 的行为，也不直接编写新 Skill。前者由用户运行 `/skill-workflow-visualizer` 完成，后者由 `skill-creator` 完成。
 
 ## 适用边界
 
-- 先读取或要求用户提供 `skill-workflow-visualizer` 的当前结果；没有结果时，先调用或建议调用它，从真实 `SKILL.md` 建立事实基线。
+- 先读取或要求用户提供 `skill-workflow-visualizer` 的当前结果；用户还没有结果时，提醒用户先运行 `/skill-workflow-visualizer`，从真实 `SKILL.md` 建立事实基线。本 Skill 不能自行调用它。
 - 用户明确授权且当前环境提供历史工具时，可以使用可访问的跨项目聚合使用模式，发现反复出现的工作、常见转交和摩擦点；历史频率不是保留、删除或创建 Skill 的充分证据。
 - 默认只交付重编排方案与新 Skill 候选，不创建、修改、删除、安装、卸载或移动任何 Skill、项目设置、业务代码或 Git 状态。
 - 用户确认变更范围后，才更新工作流文档、安装范围或清单；用户确认要创建、改造或评测某个 Skill 后，才转交 `skill-creator`。
@@ -31,12 +32,12 @@ description: "根据 Skill 工作流可视化结果、当前 Skill 正文、项�
 
 | 来源 | 用途 | 不能证明什么 |
 | --- | --- | --- |
-| `skill-workflow-visualizer` 结果 | 当前 Skill 的触发、前提、输出、人工关口和实际转交 | 用户是否喜欢或经常使用它 |
+| `skill-workflow-visualizer` 结果（用户运行后提供） | 当前 Skill 的触发、前提、输出、人工关口和实际转交 | 用户是否喜欢或经常使用它 |
 | 当前 `SKILL.md` 与项目规则 | Skill 现在真实能做什么、受什么约束 | 历史使用频率 |
 | 用户明确授权的跨项目历史 | 重复任务、常见起点、转交模式和摩擦 | 当前项目的硬性流程或用户的新决定 |
 | 用户当前目标 | 要优化哪个范围、允许哪些变更 | 未明确的个人偏好 |
 
-缺少可视化事实基线时，停在这里：先完成 `skill-workflow-visualizer`，不要根据 Skill 名称、安装来源或记忆直接建议删改。
+缺少可视化事实基线时，停在这里：提醒用户先运行 `/skill-workflow-visualizer`，不要根据 Skill 名称、安装来源或记忆直接建议删改。
 
 ## 2. 找出重编排候选
 
@@ -48,6 +49,21 @@ description: "根据 Skill 工作流可视化结果、当前 Skill 正文、项�
 | 转交补齐 | 某个任务经常卡在缺少下一步、错误转交或人工关口不清 | 补充前提、用户确认点和下一步条件 |
 | 精简或降级 | Skill 与主入口输出高度重叠、无实际场景，或只是占位模板/运行产物 | 建议删除、合并、停用或降为按需参考 |
 | 新 Skill 候选 | 用户在多个任务或项目中反复执行同一稳定工作，且现有 Skill 组合无法清楚承接 | 写出候选契约，等待确认后转 `skill-creator` |
+
+「精简或降级」不能只凭"看起来啰嗦"判断。提出该候选前，先对它涉及的每个段落做一遍内容三分，并逐条给出该 Skill 的具体行号：
+
+| 类别 | 判据 | 处置 |
+| --- | --- | --- |
+| Expert | 本项目/本机才知道的事实、约束、路径、历史决定或取舍理由，模型无从推断 | 保留 |
+| Activation | 模型知道但通常想不到，或只在特定触发语境下适用：边界、禁用项、常见误判、确认门、判定规则 | 保留，压到一行内 |
+| Redundant | 模型必然知道：通用工程常识、术语解释性铺垫、与本 Skill 自己 `references/` 重复、与相邻 Skill 重复的同一规则 | 删除或降为按需参考 |
+
+判定要求：
+
+- 每条候选写明 Skill 名、行号和归类；只写"内容冗余"不构成证据。
+- 无法归类的段落标为"待核实"，不得因为"看起来长"就建议删除。
+- 已被 `evals/` 用例覆盖的行为段落，优先归为 Activation 而不是 Redundant。
+- 与另一个 Skill 重复的规则，先判断哪个是主入口，再从非主入口那一侧删除，不要两边都删。
 
 新 Skill 候选必须同时满足：
 
@@ -124,7 +140,7 @@ flowchart TD
 
 ## 与相邻 Skill 的边界
 
-- `skill-workflow-visualizer`：建立当前事实基线并可视化；本 Skill 在此基础上提出重编排与新 Skill 候选。
+- `skill-workflow-visualizer`（仅用户可调用）：建立当前事实基线并可视化；本 Skill 在此基础上提出重编排与新 Skill 候选，不能自行调用它。
 - `skill-creator`：设计、编写、评测和迭代已确认的新 Skill 或改造项；本 Skill 只提供经过确认的候选契约。
 - `docs-integrity-audit`：审计项目文档体系的链接、状态与权威来源；本 Skill 只调整 Skill 工作流与安装范围。
 - `decision-to-spec`：同步已确认的产品或架构决定；本 Skill 不把工作流建议自动升级为项目规格。

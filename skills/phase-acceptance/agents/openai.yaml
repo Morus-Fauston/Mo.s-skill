@@ -1,0 +1,3 @@
+interface:
+  display_name: "Phase Acceptance"
+  short_description: "Accept a stage, version, or milestone against its promises"

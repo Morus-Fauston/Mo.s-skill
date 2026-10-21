@@ -1,3 +1,57 @@
+v0.9.0 (2026-10-20 23:36)
+  新增: sat-changelog-writer，独立维护的 SAT 提交员专版
+  - 主管确定版本、批次和写入范围；日志与具体差异仅交主管审阅，不增加独立审阅员
+  - 覆盖内容变化重审、混杂暂存、同仓库串行、本地核对后解冻及原 commit 推送跟踪
+  - 项目规范优先；缺省双日志，TXT 完整区块作为提交信息
+  - 新增 11 个评测场景、46 条期望
+  文档: README 更新为十个个人版和一个 SAT 专版，明确入口、确认门及分发边界
+  [已知问题] 场景库无可执行 runner，未取得模型行为评测结果
+  [待完成] SAT 定向加载、业务入口和隔离验证需后续授权
+  [刻意不做] 不改个人版、不安装、不实现 SAT 工具或预设；静态检查不代表端到端通过
+
+====
+
+v0.8.0 (2026-10-20 22:53)
+  [破坏性] 四个 Skill 改为仅用户可调用：repository-docs-bootstrap / skill-workflow-orchestrator / interaction-prototype-to-spec / skill-workflow-visualizer
+  - 迁移：需要这些能力时显式点名 Skill 或运行斜杠命令；原来依赖自动转交的用法改由你手动发起
+  新增: 调用分档与两条判据
+  - 十个 Skill 增加 agents/openai.yaml；四个仅手动 Skill 加 disable-model-invocation 与 policy.allow_implicit_invocation: false
+  - visualizer 增加画图时机与分层，单图节点上限 7 个
+  - interaction 增加什么算复杂状态四条判据
+  调整: 报告默认不落盘且路径固定
+  - 六个 Skill 报告模板 211 → 103 行，固定路径 .scratch/reports/<skill>/<日期>-<主题>.md
+  - 12 处指向仅手动 Skill 的转交改为提醒用户自行运行
+  - 四个仅手动 Skill 的 description 改为面向人的一句话
+  技术: README 增加调用列与调用方式一节
+  [已知问题] 无
+  [待完成] 报告骨架仍偏长合计 103 行 / evals 仍无可执行 runner
+  [刻意不做] 不为不支持的 harness 兜底 / 不引入第三方审计脚本 / 不新增 Skill
+
+====
+
+v0.7.0 (2026-10-20 22:29)
+  调整: 仓库结构收敛为 README、LICENSE、更新日志与 skills/
+  - 删除 docs/、scripts/、manifests/、.github/、CONTRIBUTING.md、CONTEXT.md
+  - 移除 skills/_shared/references/ 三个共享契约，九个 SKILL.md 改为自包含声明
+  修复: 悬空转交、状态档位、重复内容和主入口竞争
+  - phase-acceptance 与 evidence-based-validation 的 qa 转交改为项目既有登记流程
+  - decision-to-spec 同步状态补齐为四档，增加不通过
+  - changelog-writer 重复模板删除，改为指向 references/changelog-format.md
+  - docs-integrity-audit 与 repository-docs-bootstrap 补齐双向排除句
+  新增: 判定判据与更新日志诚实惯例
+  - skill-workflow-orchestrator 增加 Expert/Activation/Redundant 三分检查表
+  - decision-to-spec 增加负向后果不可为空、被否决方案写最强理由、记录先于引用
+  - changelog 增加已知问题、待完成、刻意不做三段，破坏性变更置顶并写迁移动作
+  - docs-integrity-audit 增加检查命令 0/1/2 退出码语义
+  技术: evals 与元数据整理
+  - evals id 统一为 kebab-case 字符串，repository-docs-bootstrap 补齐 files 字段
+  - 删除唯一的 agents/openai.yaml
+  [已知问题] 无
+  [待完成] 无自动化评测 runner，evals 仍为评测场景库
+  [刻意不做] 不引入第三方审计脚本 / 不外移报告模板 / 不新增 Skill / 不删除 evals
+
+====
+
 v0.6.0 (2026-10-10 12:33)
   新增: repository-docs-bootstrap 仓库文档初始化 Skill
   - 以 MTP 为默认范式建立 README、AGENTS、CONTEXT、Docs、ADR、Research、工作流、验证反馈、agents 和 .scratch 骨架

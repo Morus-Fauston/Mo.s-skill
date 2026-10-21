@@ -1,0 +1,5 @@
+interface:
+  display_name: "Skill Workflow Visualizer"
+  short_description: "Map real Skill triggers, gates, and handoffs"
+policy:
+  allow_implicit_invocation: false
