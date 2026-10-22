@@ -41,7 +41,7 @@
 | 术语表/`CONTEXT.md` | 哪些词有正式含义？哪些边界不能混用？ |
 | 文档总入口 | 当前依据从哪里开始？历史和私有材料在哪里？ |
 | 当前决策/规格 | 当前做什么、为什么、范围和验收边界是什么？ |
-| ADR | 哪些取舍难逆转，未来为什么不能悄悄推翻？ |
+| ADR | 哪些决定存在实质取舍，接受了什么代价，为什么放弃备选？ |
 | Research 入口 | 研究对象、编号、交付/审阅/采纳状态和证据在哪里？ |
 | 工作流 | 反复执行的输入、输出、责任和人工关口是什么？ |
 | 执行台账/票据 | 当前工作如何关联范围、依赖和证据？ |
@@ -54,8 +54,11 @@
 
 ```text
 方向未定 -> grilling/think -> 用户确认 -> decision-to-spec
-关键事实不清 -> research-brief/research -> 审阅并确认采纳 -> decision-to-spec
-实现完成 -> evidence-based-validation -> phase-acceptance 或 check
+需要独立委托材料 -> research-brief -> 用户自行决定是否派发
+关键事实不清 -> research 或等价调查 -> 审阅并确认采纳 -> decision-to-spec
+单改动验证层/证据存疑 -> evidence-based-validation
+明确阶段验收 -> phase-acceptance（复用已有有效证据）
+代码审查 -> check 或等价审查
 文档迁移/断链 -> docs-integrity-audit -> 发现缺少已确认落点时 decision-to-spec
 ```
 

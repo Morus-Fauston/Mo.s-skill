@@ -1,0 +1,110 @@
+{
+  "purpose": "人工或独立 Agent 做入口选择模拟；只给 catalog 和 prompt，不给 expected_skill。none 表示本仓库无须加载的入口，不代表不执行任务。不能替代目标 Agent 的真实发现/加载评测。",
+  "cases": [
+    {
+      "id": "release-notes",
+      "prompt": "帮我根据这次版本的实际改动起草双格式更新日志，先不写文件。",
+      "expected_skill": "changelog-writer"
+    },
+    {
+      "id": "confirmed-sync",
+      "prompt": "这两项产品规则已经确认，请同步到现行规格和相关规划。",
+      "expected_skill": "decision-to-spec"
+    },
+    {
+      "id": "docs-migration",
+      "prompt": "Docs 改名后请检查入口、旧链接和索引，先只报告问题。",
+      "expected_skill": "docs-integrity-audit"
+    },
+    {
+      "id": "native-evidence",
+      "prompt": "下拉箭头热区改完了，offscreen 测试通过能证明 Windows 原生点击正常吗？请验证这次改动。",
+      "expected_skill": "evidence-based-validation"
+    },
+    {
+      "id": "stage-acceptance",
+      "prompt": "按第二阶段规格验收本阶段的导出、权限和列表交互，告诉我是否达到交付标准。",
+      "expected_skill": "phase-acceptance"
+    },
+    {
+      "id": "research-commission",
+      "prompt": "为独立 Agent 写一份缓存技术路线的调研任务书，含证据标准和交付要求。",
+      "expected_skill": "research-brief"
+    },
+    {
+      "id": "generic-note",
+      "prompt": "记录一下：明天下午开会。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "code-summary",
+      "prompt": "总结这段函数的修改，放在代码评审说明里。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "only-commit",
+      "prompt": "只提交我已经暂存的这个小修复，别更新版本记录。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "run-command",
+      "prompt": "运行 python -B verify.py，把实际输出告诉我。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "general-progress",
+      "prompt": "我还需要做什么？请根据这轮已完成的动作简短说明。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "direct-research",
+      "prompt": "直接查源码回答缓存有没有按用户隔离，我不要任务书。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "doc-polish",
+      "prompt": "把 README 这一段写得自然一些，意思不变。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "undecided-design",
+      "prompt": "这两种数据模型我还没选，先帮我比较取舍，不要写进规格。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "handoff-note",
+      "prompt": "把本次进度整理成给下个 Agent 的简短交接文字。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "single-bug",
+      "prompt": "运行时出现 NullReferenceException，帮我找根因。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "manual-meta",
+      "prompt": "主动使用 $skill-workflow-orchestrator，检查这几个 Skill 是否职责重叠。",
+      "expected_skill": "skill-workflow-orchestrator"
+    },
+    {
+      "id": "manual-prototype",
+      "prompt": "主动使用 $interaction-prototype-to-spec，先做两种可体验入口让我选择。",
+      "expected_skill": "interaction-prototype-to-spec"
+    },
+    {
+      "id": "sat-not-a-batch",
+      "prompt": "交付审计通过了，请总结结果；没有主管提交安排。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "plain-diagram",
+      "prompt": "给这段业务代码画流程图。",
+      "expected_skill": "none"
+    },
+    {
+      "id": "discussion-to-full-spec",
+      "prompt": "刚讨论的导出需求和范围已经清楚，请整理成能交给 Agent 开发和验收的完整规格，目前还没有规格文件。",
+      "expected_skill": "decision-to-spec"
+    }
+  ]
+}

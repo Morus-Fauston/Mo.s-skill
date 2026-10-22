@@ -78,7 +78,7 @@ docs/<产品域>/
 
 ### `ADR/`
 
-保存难逆转、未来读者会疑惑且有明确取舍的架构/产品决策。`README.md` 说明编号制度、状态和当前决策入口；普通 UI 细节不强行写 ADR。文件名固定采用中文主题：
+保存存在实质取舍的架构/产品决策，说明备选的最强理由、拒绝依据与接受的代价；不以难逆转作为唯一门槛。`README.md` 说明编号制度、状态和当前决策入口；普通 UI 细节不强行写 ADR。文件名固定采用中文主题：
 
 ```text
 ADR-{三位序号}-{中文决定主题}.md
@@ -182,16 +182,16 @@ Research 索引维护当前状态，任务书和报告只保留带日期的历�
 ```markdown
 ## Skill 工作流
 
-- 新功能、边界或架构尚未收敛：使用 `grilling` 或 `think`；关键事实无法快速确认时使用 `research-brief` / `research`；复杂交互需要体验时使用 `interaction-prototype-to-spec`。
-- 已确认结论：使用 `decision-to-spec` 同步术语表、当前决策、ADR、规格或规划；需要完整阶段规划时使用 `think`。
-- 用户明确授权实施：优先使用 `tdd` 或项目等价实现流程；实现完成后用 `evidence-based-validation`，阶段或版本用 `phase-acceptance`。
+- 新功能、边界或架构尚未收敛：使用 `grilling` 或 `think`；关键事实需要调查时使用 `research` 或项目等价流程，需要独立委托材料时使用 `research-brief`；复杂交互需要体验时可建议用户主动使用 `interaction-prototype-to-spec`。
+- 已讨论需求与决定需要形成开发规格：使用 `decision-to-spec` 作为 `to-spec` 入口，综合规格后同步术语、ADR 和规划；已有完整规格的小改动可直接同步。需要完整阶段规划时使用 `think`。
+- 用户明确授权实施：优先使用 `tdd` 或项目等价实现流程；具体改动的验证层或证据覆盖不清时用 `evidence-based-validation`，明确的阶段/版本验收用 `phase-acceptance`；已有充分证据直接复用。
 - 报错、回归、失败测试或行为异常：直接使用 `hunt` 或 `diagnosing-bugs`，修复后重新验证。
 - 文档迁移、断链、旧路径、索引或状态一致性：使用 `docs-integrity-audit`；已确认决定缺少正式落点时再使用 `decision-to-spec`。
 - UI 方向未定时使用 `frontend-design`；用户确认方向并明确要求实现时使用 `ui`；需要快速验证状态或交互逻辑时使用 `prototype`。
 - 合并前审查 diff、PR 或发布准备：使用 `check`；固定基线的 Standards/Spec 双轴审查使用 `code-review`。
 - 准备记录版本：使用 `changelog-writer`；创建、改造或评测 Skill：使用 `skill-creator`；Agent 指令、配置、MCP 或验证面出现漂移：使用 `health`。
-- Skill 工作流或流程图更新：使用 `skill-workflow-visualizer` 依据当前 Skill 正文核对；需要重编排时使用 `skill-workflow-orchestrator`，文字规则优先于图示。
-- 仓库文档首次建立或治理骨架缺失：使用 `repository-docs-bootstrap`；已有体系只查断链和状态时使用 `docs-integrity-audit`。
+- Skill 工作流或流程图更新：可建议用户主动使用 `skill-workflow-visualizer`；重编排可主动使用 `skill-workflow-orchestrator`。两者按仅手动调用策略处理，文字规则优先于图示。
+- 仓库文档首次建立或治理骨架缺失：可建议用户主动使用 `repository-docs-bootstrap`；已有体系只查断链和状态时使用 `docs-integrity-audit`。
 
 ### 人工确认关口
 
