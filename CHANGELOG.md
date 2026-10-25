@@ -1,5 +1,63 @@
 # Changelog
 
+## v0.10.1 (2026-10-25 23:55)
+
+### 修复
+
+- **上游表与来源索引的恢复**：`manifests/` 与 `docs/` 在 v0.9.0 的仓库收拢中被整体删除，上游来源索引和三档说明因此不在版本控制里；本次按收拢前的最后版本恢复与上游表直接相关的 5 个文件。
+  - `manifests/all-used.json`（53 个上游 Skill 来源索引与 4 条排除项）与 `manifests/recommended.json`（34 个推荐上游选择）与删除前逐字节一致，本次未做任何改动
+  - `docs/分层清单.md`、`docs/安装与更新.md`、`docs/来源与许可.md` 恢复后再修正口径，见下三条
+  - v0.9.0 实际删除 16 个文件，本次恢复 5 个，其余 11 个仍处于删除状态
+- **上游表复核结论**：对照本地 `.skills/upstream/` 五个上游缓存逐条核对，表内 53 条没有失效项。
+  - Matt Pocock 28/28、Anthropic 15/15、Waza 8/8、Huashu Design 1/1、Kill AI Slop 1/1 全部存在，未发现改名或下线
+  - 五个缓存最后一次 fetch 为 2026-10-01，`HEAD` 与 `origin/main` 一致、0 commits 落后，因此下面「未选入」的 11 条在建表时已存在，属策展取舍而非上游新增
+- **三档数量口径与 SAT 专版归属**：恢复的文档按 v0.6.0 快照写作，早于 v0.9.0 新增的 `sat-changelog-writer`，会让读者以为自有 Skill 只有十个通用入口。
+  - 明确 `sat-changelog-writer` 是角色限定的 SAT 专版、不复制进个人全局目录，因此不计入三档
+  - 数量保持 `own=10`、`recommended=44`、`all=63`，与 `manifests` 的「53 upstream + 10 owned」自洽
+  - 「十个自有 Skill」一类表述改为「十个个人版 Skill」
+- **过时引用与断链**：`docs/安装与更新.md` 仍在描述 v0.9.0 已删除的 `skills/_shared/references/` 共享契约目录和被删除的校验脚本，并链接到未恢复的 `技能选择.md`。
+  - 改为「每个 `SKILL.md` 自带可独立运行的最小摘要，仓库不维护共享契约目录」，并删去校验脚本提法
+  - 断链改指 `README.md` 的 Skill 选择表；三份恢复文档的相对链接现为 0 断链
+- **漏记的上游来源**：`docs/来源与许可.md` 的上游项目表缺 `Huashu Design`，而 `manifests` 与分层清单都记录了它；补回该来源的覆盖方向、MIT 许可与安装边界。
+
+### 新增
+
+- **未选入上游 Skill 的事实记录**：`docs/分层清单.md` 的排除表只列 4 项，但本地缓存中另有 11 个上游 Skill 既未选入、也不在排除项内，读者无法从表里区分「未选入」与「失效」。
+  - Matt Pocock Skills 7 个：`claude-handoff`、`setup-ts-deep-modules`、`to-questionnaire`、`wait-what`、`writing-for-agents`、`migrate-to-shoehorn`、`scaffold-exercises`
+  - Anthropic Skills 4 个：`academy-guide`、`claude-api`、`internal-comms`、`slack-gif-creator`
+  - 写明它们不是失效条目，选入其中任何一项都需要单独决定并同步 `manifests/` 与清单
+
+### 文件变更
+
+| 文件 | 变更 |
+|:-----|:------|
+| `manifests/all-used.json` | **恢复** — 与删除前逐字节一致，53 条上游索引与 4 条排除项 |
+| `manifests/recommended.json` | **恢复** — 与删除前逐字节一致，34 条推荐上游选择 |
+| `docs/分层清单.md` | **恢复并修正** — 补 SAT 专版归属与 11 条未选入记录，口径改为「个人版」 |
+| `docs/安装与更新.md` | **恢复并修正** — 删除 `_shared` 与校验脚本的过时描述，修断链 |
+| `docs/来源与许可.md` | **恢复并修正** — 补 Huashu Design 来源行，标注 SAT 专版分发边界 |
+
+### 已知问题
+
+- v0.9.0 的既有条目仍写着 `docs/`、`scripts/`、`manifests/`、`.github/`「不再随仓库分发」，与本版本恢复后的状态冲突；已发布条目按规则不改写，以本条目为准。
+- `docs/` 目前只有 3 篇文档，恢复后仍缺 `技能选择.md`、`工作流协作.md`、`工作流设计哲学.md` 与 ADR，导航不完整。
+- 仓库没有校验入口：`scripts/validate.ps1` 仍处于删除状态，本轮 JSON 与清单一致性靠临时检查完成，不能复跑。
+
+### 待完成
+
+- 11 个未选入的上游 Skill 的取舍决定；触发条件是作者要调整 `all` 档范围。
+- 其余 11 个被删文件（`CONTEXT.md`、`CONTRIBUTING.md`、`.github/copilot-instructions.md`、`scripts/validate.ps1`、`skills/_shared/references/` 3 份、4 篇 docs 与 ADR）是否恢复；触发条件是决定为 `docs/` 重建导航。
+- 仓库仍无自动回归 runner，`evals/` 场景库没有可执行入口。
+
+### 刻意不做
+
+- **不改写 v0.9.0 已发布条目**：已发布版本不得修改，用新条目记录恢复事实并保留历史。
+- **不代替作者做选入决定**：11 条未选入的上游 Skill 只记事实与差异，不因复核就补进索引。
+- **不为 SAT 专版虚构安装口径**：`sat-changelog-writer` 依赖 SAT 的真实身份、目录裁剪与业务授权，本次只标注「不计入三档」。
+- **不整体改版文档**：只在恢复内容上修口径、断链与漏记项，不重写结构与章节。
+
+---
+
 ## v0.10.0 (2026-10-22 22:43)
 
 ### 调整

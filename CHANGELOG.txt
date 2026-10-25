@@ -1,3 +1,21 @@
+v0.10.1 (2026-10-25 23:55)
+  修复: 恢复被误删的上游来源索引与三档文档，修正数量口径、过时引用、断链与漏记来源
+  - 按 v0.9.0 收拢前的最后版本恢复 5 个文件；manifests/all-used.json（53 条上游 + 4 条排除项）与 manifests/recommended.json（34 条推荐）逐字节未改
+  - v0.9.0 实际删除 16 个文件，本次恢复 5 个，其余 11 个仍处于删除状态
+  - 复核 53 条上游条目全部在本地缓存中存在，无改名或下线；五个缓存 2026-10-01 fetch，HEAD 与 origin/main 一致、0 commits 落后
+  - sat-changelog-writer 是角色限定的 SAT 专版，不计入三档；数量保持 own=10 / recommended=44 / all=63，与 manifests 的 53 upstream + 10 owned 自洽
+  - 删除 skills/_shared/references/ 与校验脚本的过时描述；技能选择.md 断链改指 README 选择表，相对链接 0 断链
+  - 补回 docs/来源与许可.md 漏记的 Huashu Design 来源行
+  新增: 分层清单补记 11 个既未选入也不在排除项内的上游 Skill，写明未选入不等于失效
+  - Matt Pocock 7 个（claude-handoff / setup-ts-deep-modules / to-questionnaire / wait-what / writing-for-agents / migrate-to-shoehorn / scaffold-exercises）
+  - Anthropic 4 个（academy-guide / claude-api / internal-comms / slack-gif-creator）
+  文件: docs/分层清单.md、docs/安装与更新.md、docs/来源与许可.md、manifests/all-used.json、manifests/recommended.json（新增 317 行）
+  [已知问题] v0.9.0 条目仍写这些路径「不再随仓库分发」；docs/ 只有 3 篇，导航不完整；scripts/validate.ps1 仍缺失，无可复跑校验入口
+  [待完成] 11 个未选入上游 Skill 的取舍；其余 11 个被删文件是否恢复；evals/ 仍无可执行 runner
+  [刻意不做] 不改写已发布条目、不代替作者选入上游 Skill、不为 SAT 专版虚构安装口径、不整体改版文档
+
+====
+
 v0.10.0 (2026-10-22 22:43)
   调整: 精修十个个人版 Skill，减少泛词误触发、重复确认、重复验证和不必要报告
   - decision-to-spec 实际执行上游 to-spec，适配本地规格；小改动轻量同步，实质取舍进入 ADR
