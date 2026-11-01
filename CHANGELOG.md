@@ -1,5 +1,48 @@
 # Changelog
 
+## v0.10.2 (2026-11-01 15:54)
+
+### 调整
+
+- **专版 Skill 更名为 MAT**：`sat-changelog-writer` 更名为 `mat-changelog-writer`，目录、`SKILL.md` 的 `name` 字段与全部现行引用同步更新；用途、审阅契约和分发边界未变。
+  - 目录由 `skills/sat-changelog-writer/` 迁移到 `skills/mat-changelog-writer/`，Git 以重命名记录，历史可追溯
+  - 正文中的「SAT 提交员」「SAT 业务入口」「SAT 隔离环境」「SAT 真实身份」等术语统一改为 MAT
+  - 场景库 `evals.json` 的 `skill_name` 与场景文本同步；入口选择场景 `activation.json` 中的 `sat-not-a-batch` 改为 `mat-not-a-batch`
+- **已发布条目保持原文**：`CHANGELOG.md`、`CHANGELOG.txt` 的 v0.9.0、v0.10.0、v0.10.1 条目和 `evals/results/` 的历史评测记录仍写 SAT 与 `sat-changelog-writer`，按「不改写已发布条目」原则保留；本次条目即 SAT→MAT 迁移的追溯依据。
+
+### 文档
+
+- **现行文档术语同步**：README 的专版描述、调用表与安装边界，以及三份 docs 的专版归属说明统一改为 MAT。
+
+### 技术
+
+- **Windows 文件权限修复（环境侧，非仓库产物）**：本次操作中 `skills/` 与 `.git/` 无法创建条目，判断为 Windows 文件权限缺项；按 ACL 诊断流程修复并复测通过，权限备份与回滚脚本留在 `D:\Device\dsh-acl-recovery`，不进入版本控制。
+
+### 文件变更表
+
+| 文件 | 变更 |
+|:-----|:-----|
+| `README.md` | 专版描述、调用表、安装边界共 8 处改为 MAT |
+| `docs/分层清单.md` | `own` 档说明与专版归属改为 MAT |
+| `docs/安装与更新.md` | 专版分发边界改为 MAT |
+| `docs/来源与许可.md` | 专版许可说明改为 MAT |
+| `evals/activation.json` | 场景 id `sat-not-a-batch` → `mat-not-a-batch` |
+| `skills/mat-changelog-writer/SKILL.md` | 由 `skills/sat-changelog-writer/` 重命名；`name`、标题与正文改为 MAT |
+| `skills/mat-changelog-writer/references/changelog-format.md` | 默认格式标题改为 MAT |
+| `skills/mat-changelog-writer/evals/evals.json` | `skill_name` 与场景文本改为 MAT |
+
+### 已知问题
+- 无
+
+### 待完成
+- 无
+
+### 刻意不做
+- 不改写已发布版本条目与历史评测记录，保留原始表述
+- 不修改第三方上游缓存 `.skills/upstream/` 中出现的 SAT 字样
+
+---
+
 ## v0.10.1 (2026-10-25 23:55)
 
 ### 修复

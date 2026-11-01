@@ -1,3 +1,16 @@
+v0.10.2 (2026-11-01 15:54)
+  调整: sat-changelog-writer 更名为 mat-changelog-writer，目录与全部现行引用同步
+  - 目录 skills/sat-changelog-writer/ → skills/mat-changelog-writer/，Git 记录为重命名
+  - 正文 SAT 提交员/业务入口/隔离环境/真实身份等术语改为 MAT
+  - evals.json 的 skill_name 与场景文本、activation.json 的 sat-not-a-batch → mat-not-a-batch 同步
+  - 已发布条目与 evals/results 历史记录保留 SAT 原文，本次条目作为迁移依据
+  文档: README 与三份 docs 的专版术语统一改为 MAT
+  技术: 本机 skills/ 与 .git/ 目录创建被 Windows 文件权限挡住，按 ACL 流程修复并复测；回滚记录在 D:\Device\dsh-acl-recovery
+  文件: README.md、docs/分层清单.md、docs/安装与更新.md、docs/来源与许可.md、evals/activation.json、skills/mat-changelog-writer/（3 个文件，含重命名）
+  [刻意不做] 不改写已发布版本条目与历史评测记录；不改第三方上游缓存 .skills/upstream/
+
+====
+
 v0.10.1 (2026-10-25 23:55)
   修复: 恢复被误删的上游来源索引与三档文档，修正数量口径、过时引用、断链与漏记来源
   - 按 v0.9.0 收拢前的最后版本恢复 5 个文件；manifests/all-used.json（53 条上游 + 4 条排除项）与 manifests/recommended.json（34 条推荐）逐字节未改

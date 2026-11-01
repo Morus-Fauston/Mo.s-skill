@@ -92,7 +92,7 @@
       "expected_skill": "interaction-prototype-to-spec"
     },
     {
-      "id": "sat-not-a-batch",
+      "id": "mat-not-a-batch",
       "prompt": "交付审计通过了，请总结结果；没有主管提交安排。",
       "expected_skill": "none"
     },
