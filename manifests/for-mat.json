@@ -1,0 +1,463 @@
+{
+  "schemaVersion": 1,
+  "profile": "for-mat",
+  "displayName": "For MAT",
+  "description": "MAT 完整明确配套来源与类型分配：27 项基础方法加 5 项手动专题入口。不是安装器、运行时权限配置或适配通过证明。",
+  "derivedFrom": "recommended",
+  "autoInherit": false,
+  "runtimeValidated": false,
+  "types": [
+    "主管",
+    "开发",
+    "调查",
+    "审阅",
+    "提交"
+  ],
+  "invocationLegend": {
+    "task": "在适用任务和既有授权内按需选择，保留真实来源的调用策略。",
+    "explicit": "仅显式使用；配套清单不解除源入口的手动限制。",
+    "explicit-arrangement": "用户或有权安排者明确交接后使用，不在每票结束时自动调用。",
+    "conditional": "答复前判断原适用／排除条件，同一对话最多提醒一次，不是每轮必用。"
+  },
+  "entries": [
+    {
+      "name": "write",
+      "group": "core",
+      "source": "https://github.com/tw93/Waza",
+      "types": [
+        "主管",
+        "开发",
+        "调查",
+        "审阅",
+        "提交"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "handoff-for-mat",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "开发",
+        "调查",
+        "审阅",
+        "提交"
+      ],
+      "invocation": "explicit-arrangement",
+      "path": "skills/handoff-for-mat",
+      "replaces": [
+        "handoff"
+      ],
+      "note": "明确交接时整理正文，工具只保存到受管项目 .TEAM/handoff/，不自动接管。"
+    },
+    {
+      "name": "read",
+      "group": "core",
+      "source": "https://github.com/tw93/Waza",
+      "types": [
+        "主管",
+        "开发",
+        "调查",
+        "审阅"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "docs-integrity-audit",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "开发",
+        "调查",
+        "审阅"
+      ],
+      "invocation": "task",
+      "path": "skills/docs-integrity-audit"
+    },
+    {
+      "name": "evidence-based-validation",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "开发",
+        "调查",
+        "审阅"
+      ],
+      "invocation": "task",
+      "path": "skills/evidence-based-validation"
+    },
+    {
+      "name": "review-mat",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "开发",
+        "调查",
+        "审阅"
+      ],
+      "invocation": "task",
+      "path": "skills/review-mat",
+      "replaces": [
+        "code-review"
+      ],
+      "note": "统一代码、报告和混合成果，自查不等独审；当前会话审阅，不调辅助。"
+    },
+    {
+      "name": "think",
+      "group": "core",
+      "source": "https://github.com/tw93/Waza",
+      "types": [
+        "主管",
+        "开发",
+        "调查"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "domain-modeling",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管",
+        "开发",
+        "调查"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "codebase-design",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管",
+        "开发",
+        "调查"
+      ],
+      "invocation": "task",
+      "note": "保留方法，原生委派及嵌套调用需按 MAT 资格定向适配。"
+    },
+    {
+      "name": "research-brief",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "开发",
+        "调查"
+      ],
+      "invocation": "task",
+      "path": "skills/research-brief",
+      "note": "只准备任务书，不自动派发；原文中的 research 后续建议在 MAT 配套中对应 research-mos。"
+    },
+    {
+      "name": "learn",
+      "group": "core",
+      "source": "https://github.com/tw93/Waza",
+      "types": [
+        "主管",
+        "开发",
+        "调查"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "doc-coauthoring",
+      "group": "core",
+      "source": "https://github.com/anthropics/skills",
+      "types": [
+        "主管",
+        "开发",
+        "调查"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "research-mos",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "开发",
+        "调查"
+      ],
+      "invocation": "task",
+      "path": "skills/research-mos",
+      "replaces": [
+        "research"
+      ],
+      "note": "主负责人可按既有资格安排一层辅助，仍负责证据核验和最终结论。"
+    },
+    {
+      "name": "hunt",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "开发",
+        "调查",
+        "审阅"
+      ],
+      "invocation": "task",
+      "path": "skills/hunt",
+      "replaces": [
+        "tw93/Waza@hunt",
+        "diagnosing-bugs"
+      ],
+      "note": "本仓库 MAT 同名适配，仅此档使用，不与 Waza hunt 或 diagnosing-bugs 同时挂载。"
+    },
+    {
+      "name": "grilling",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "grill-me",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管"
+      ],
+      "invocation": "explicit"
+    },
+    {
+      "name": "grill-with-docs",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管"
+      ],
+      "invocation": "explicit",
+      "note": "保留 grilling 和 domain-modeling 依赖，正式写入仍依授权。"
+    },
+    {
+      "name": "decision-to-spec",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "开发"
+      ],
+      "invocation": "task",
+      "path": "skills/decision-to-spec",
+      "note": "完整规格综合需真实 to-spec；可取得依赖不等于已经验证其显式调用接入。"
+    },
+    {
+      "name": "to-spec",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管",
+        "开发"
+      ],
+      "invocation": "explicit",
+      "note": "同时保留为 decision-to-spec 的依赖；显式触发与按依赖读取分别核对，不暗改上游调用策略。"
+    },
+    {
+      "name": "to-tickets-mat",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管"
+      ],
+      "invocation": "task",
+      "path": "skills/to-tickets-mat",
+      "replaces": [
+        "to-tickets"
+      ]
+    },
+    {
+      "name": "phase-acceptance",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管",
+        "审阅"
+      ],
+      "invocation": "task",
+      "path": "skills/phase-acceptance"
+    },
+    {
+      "name": "discernment-nudge-mos",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "主管"
+      ],
+      "invocation": "conditional",
+      "path": "skills/discernment-nudge-mos",
+      "replaces": [
+        "discernment-nudge"
+      ]
+    },
+    {
+      "name": "prototype",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管",
+        "开发"
+      ],
+      "invocation": "task",
+      "note": "本轮仅逻辑／状态原型；UI 设计制作由用户负责，不能隐式补装 UI 方法。"
+    },
+    {
+      "name": "implement-mat",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "开发"
+      ],
+      "invocation": "task",
+      "path": "skills/implement-mat",
+      "replaces": [
+        "implement"
+      ]
+    },
+    {
+      "name": "tdd",
+      "group": "core",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "开发"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "webapp-testing",
+      "group": "core",
+      "source": "https://github.com/anthropics/skills",
+      "types": [
+        "开发",
+        "审阅"
+      ],
+      "invocation": "task"
+    },
+    {
+      "name": "mat-changelog-writer",
+      "group": "core",
+      "source": "local",
+      "types": [
+        "提交"
+      ],
+      "invocation": "task",
+      "path": "skills/mat-changelog-writer",
+      "replaces": [
+        "changelog-writer"
+      ]
+    },
+    {
+      "name": "repository-docs-bootstrap",
+      "group": "manual",
+      "source": "local",
+      "types": [],
+      "invocation": "explicit",
+      "path": "skills/repository-docs-bootstrap",
+      "note": "用户显式进行的一次性项目初始化，不属于日常五类型基础集。"
+    },
+    {
+      "name": "interaction-prototype-to-spec",
+      "group": "manual",
+      "source": "local",
+      "types": [],
+      "invocation": "explicit",
+      "path": "skills/interaction-prototype-to-spec",
+      "note": "用户显式入口，UI 制作由用户负责，不新增自动设计流程。"
+    },
+    {
+      "name": "skill-workflow-visualizer",
+      "group": "manual",
+      "source": "local",
+      "types": [
+        "主管"
+      ],
+      "invocation": "explicit",
+      "path": "skills/skill-workflow-visualizer"
+    },
+    {
+      "name": "skill-workflow-orchestrator",
+      "group": "manual",
+      "source": "local",
+      "types": [
+        "主管"
+      ],
+      "invocation": "explicit",
+      "path": "skills/skill-workflow-orchestrator"
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "group": "manual",
+      "source": "https://github.com/mattpocock/skills",
+      "types": [
+        "主管"
+      ],
+      "invocation": "explicit",
+      "note": "主管手动候选分析；原生委派与质询依赖需要适配。"
+    }
+  ],
+  "excluded": [
+    {
+      "name": "huashu-design",
+      "reason": "UI 设计制作由用户负责，不进入本轮五类型基础装配。"
+    },
+    {
+      "name": "ui",
+      "reason": "UI 设计制作由用户负责，不进入本轮五类型基础装配。"
+    },
+    {
+      "name": "kill-ai-slop",
+      "reason": "UI 设计制作由用户负责，不进入本轮五类型基础装配。"
+    },
+    {
+      "name": "ask-matt",
+      "reason": "用户不采用该导航流程。"
+    },
+    {
+      "name": "triage",
+      "reason": "用户不采用该分类办理流程。"
+    },
+    {
+      "name": "wayfinder",
+      "reason": "首期不增加决定票地图流程。"
+    },
+    {
+      "name": "diagnosing-bugs",
+      "reason": "有效复现思路已吸收进 MAT hunt，不并列排错入口。"
+    },
+    {
+      "name": "check",
+      "reason": "MAT 使用统一审阅、证据验证和阶段验收分工；个人推荐不受此排除影响。"
+    },
+    {
+      "name": "health",
+      "reason": "当前宿主目标不匹配，不作为 MAT／DSH 装配检查器。"
+    },
+    {
+      "name": "teach",
+      "reason": "面向用户的教学工作区，不是执行会话学习资料的方法。"
+    },
+    {
+      "name": "git-guardrails-claude-code",
+      "reason": "Claude Code 专用 Hook，不是当前 DSH 权限机制。"
+    },
+    {
+      "name": "resolving-merge-conflicts",
+      "reason": "不照搬整体暂存提交；主管协调、开发修正、提交员获准收尾。"
+    }
+  ],
+  "notes": [
+    "按本清单选择，不先挂全量推荐再靠提示禁止；不得向一个会话挂载全部32项。",
+    "group=manual 的前两项没有默认类型归属，属于用户主动初始化／专题入口；其他手动项仅主管侧。",
+    "local 表示本仓库源码，其余 source 是上游来源；相对 path 从仓库根解析。",
+    "For MAT 不自动跟随 recommended 的增删、正文或调用政策变化；共用来源复核后再明确更新。",
+    "上游保留方法的身份、提问、原生委派、Git、输出路径与显式依赖尚需 MAT 定向核验；清单完整不等于全部正文已适配。",
+    "只有源文件和任务契约在本仓库；MAT 角色、业务工具、文件权限和端到端加载尚未验证。",
+    "不修改个人原版、安装目录、own 或 all；discernment-nudge-mos 在 MAT 使用不自动改变日常推荐档。"
+  ]
+}

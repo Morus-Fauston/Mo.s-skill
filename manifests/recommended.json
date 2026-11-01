@@ -1,30 +1,128 @@
 {
   "schemaVersion": 1,
-  "description": "Recommended upstream Skill source index for the author's daily planning, implementation, validation, research, documentation, UI, and Git workflows. Install each source through its own official Agent-specific channel.",
+  "description": "日常推荐来源清单：原 own 10 项、本仓库 research-mos 1 项、上游 33 项，共 44 项。仅描述来源选择，不执行安装。",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
-      "skills": ["ask-matt", "code-review", "codebase-design", "diagnosing-bugs", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "implement", "improve-codebase-architecture", "prototype", "research", "resolving-merge-conflicts", "git-guardrails-claude-code", "tdd", "teach", "to-spec", "to-tickets", "triage", "wayfinder"]
+      "skills": [
+        "ask-matt",
+        "code-review",
+        "codebase-design",
+        "diagnosing-bugs",
+        "domain-modeling",
+        "grill-me",
+        "grill-with-docs",
+        "grilling",
+        "handoff",
+        "implement",
+        "improve-codebase-architecture",
+        "prototype",
+        "resolving-merge-conflicts",
+        "git-guardrails-claude-code",
+        "tdd",
+        "teach",
+        "to-spec",
+        "to-tickets",
+        "triage",
+        "wayfinder"
+      ]
     },
     {
       "source": "https://github.com/anthropics/skills",
-      "skills": ["discernment-nudge", "doc-coauthoring", "webapp-testing"]
+      "skills": [
+        "discernment-nudge",
+        "doc-coauthoring",
+        "webapp-testing"
+      ]
     },
     {
       "source": "https://github.com/yetone/kill-ai-slop",
-      "skills": ["kill-ai-slop"],
+      "skills": [
+        "kill-ai-slop"
+      ],
       "license": "Apache-2.0",
       "install_path": "skill/"
     },
     {
       "source": "https://github.com/alchaincyf/huashu-design",
-      "skills": ["huashu-design"],
+      "skills": [
+        "huashu-design"
+      ],
       "license": "MIT"
     },
     {
       "source": "https://github.com/tw93/Waza",
-      "skills": ["check", "health", "hunt", "learn", "read", "think", "ui", "write"],
+      "skills": [
+        "check",
+        "health",
+        "hunt",
+        "learn",
+        "read",
+        "think",
+        "ui",
+        "write"
+      ],
       "license": "MIT"
     }
+  ],
+  "profile": "recommended",
+  "localSkills": [
+    {
+      "name": "changelog-writer",
+      "path": "skills/changelog-writer"
+    },
+    {
+      "name": "decision-to-spec",
+      "path": "skills/decision-to-spec"
+    },
+    {
+      "name": "docs-integrity-audit",
+      "path": "skills/docs-integrity-audit"
+    },
+    {
+      "name": "evidence-based-validation",
+      "path": "skills/evidence-based-validation"
+    },
+    {
+      "name": "interaction-prototype-to-spec",
+      "path": "skills/interaction-prototype-to-spec"
+    },
+    {
+      "name": "phase-acceptance",
+      "path": "skills/phase-acceptance"
+    },
+    {
+      "name": "research-brief",
+      "path": "skills/research-brief"
+    },
+    {
+      "name": "repository-docs-bootstrap",
+      "path": "skills/repository-docs-bootstrap"
+    },
+    {
+      "name": "skill-workflow-visualizer",
+      "path": "skills/skill-workflow-visualizer"
+    },
+    {
+      "name": "skill-workflow-orchestrator",
+      "path": "skills/skill-workflow-orchestrator"
+    },
+    {
+      "name": "research-mos",
+      "path": "skills/research-mos"
+    }
+  ],
+  "replacements": [
+    {
+      "source": "https://github.com/mattpocock/skills",
+      "from": "research",
+      "to": "research-mos"
+    }
+  ],
+  "notes": [
+    "research-mos 负责当前会话的调查与交付，有资格的主负责人仍可按项目规则使用辅助，不强制先委派。",
+    "discernment-nudge-mos 已有源码但未确认替换日常推荐；本清单仍保留上游 discernment-nudge，不默认同时装两份。",
+    "此处 hunt 来自 Waza；本仓库 skills/hunt 是 MAT 适配，不属于个人推荐档。",
+    "MAT 专版只在 For MAT 中选择；清单同步不表示个人安装目录已经更新或运行验证通过。"
   ]
 }

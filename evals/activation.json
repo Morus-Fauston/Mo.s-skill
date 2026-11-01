@@ -59,7 +59,7 @@
     {
       "id": "direct-research",
       "prompt": "直接查源码回答缓存有没有按用户隔离，我不要任务书。",
-      "expected_skill": "none"
+      "expected_skill": "research-mos"
     },
     {
       "id": "doc-polish",

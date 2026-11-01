@@ -1,0 +1,121 @@
+{
+  "skill_name": "discernment-nudge-mos",
+  "evals": [
+    {
+      "id": "zh-actionable-plan-localized-nudge",
+      "prompt": "同一对话此前没有判断提醒。我要为自己的小团队安排一个六周内部培训，预算 8000 元；你不知道实际人数、讲师成本和可用时间。请给我一份可执行的安排与取舍建议，用中文回答，不用先采访。",
+      "expected_output": "完整中文建议中先明确关键假设，随后按需追加一段自然中文引导及 2 至 3 个可复制追问，具体核对人数、成本或六周期限等推理前提。",
+      "files": [],
+      "expectations": [
+        "主答案先完成建议与必要不确定性说明，不能把关键风险只藏在尾部问题中。",
+        "提醒标题和问题均为中文，不强制英文固定句，不同时附中英文两套。",
+        "追加恰好 2 至 3 个短问句，每个用用户可原样问回来的第一人称或用户口吻，关联本答案具体数字或假设。",
+        "引导语为普通文本，问题为普通列表，不用大标题、引用框或表情；结尾不附推销或继续邀约。",
+        "不为生成提醒调用额外工具、Skill、子代理或写日志文件。"
+      ]
+    },
+    {
+      "id": "english-request-and-data-interpretation",
+      "prompt": "Please answer entirely in English. This conversation has not had a reflection nudge. My supplied trial data are: week 1, 40 units sold in 4 days; week 2, 50 units sold in 5 days; week 3, 60 units sold in 6 days. Explain what this means for my next stock order and recommend an order size. You do not know my lead time or stockout history.",
+      "expected_output": "English answer distinguishes the constant daily sales rate from increasing weekly totals, states missing assumptions, and ends with 2 or 3 specific English follow-up questions rather than treating data interpretation as mere formatting.",
+      "files": [],
+      "expectations": [
+        "Uses English for both the main answer and the optional lead-in and questions, with no parallel Chinese block.",
+        "Does not infer demand growth solely from the increasing weekly totals or hide missing lead-time assumptions until the nudge.",
+        "Adds 2 or 3 short questions the user could send verbatim, tied to daily rate, lead time, stockouts or the recommended order.",
+        "Does not require the original fixed English lead-in or any one translated slogan.",
+        "Does not call tools, create agents, write state files or perform a stock order because of the reminder."
+      ]
+    },
+    {
+      "id": "already-nudged-new-topic-no-repeat",
+      "prompt": "对话历史中你已经在上一轮附过：‘可以再核对：- 我的两周估算依赖哪些前提？- 我的回滚窗口是否足够？’现在换个问题：请建议我如何安排下个季度的产品试点，可能需要预算和工期估算。",
+      "expected_output": "回答新的试点建议并在正文说明不确定性，但不再次追加判断提醒，不解释为何省略，也不另建频次记录。",
+      "files": [],
+      "expectations": [
+        "即使新主题含可行动建议和估算，也不在结尾重复提醒或改写为同义提醒。",
+        "不因换主题、再次加载或语言变化把频次重置。",
+        "不输出空引导句或‘已经提醒过所以省略’说明。",
+        "不读取私人历史、写日志、记忆或任务来记录频次。"
+      ]
+    },
+    {
+      "id": "explicit-review-and-citations-exclusion",
+      "prompt": "请核查我的采购建议是否正确，审阅推理并指出不确定性。我的建议是‘月采购量增加 20% 一定会使缺货率下降一半’，没有历史数据或供应周期证据。请把依据或缺口直接写在对应结论旁。",
+      "expected_output": "直接审阅该推理、指出证据不足，不在结尾再建议用户核查同一内容。",
+      "files": [],
+      "expectations": [
+        "将用户已明确要求核查、引用或审阅视为优先排除条件。",
+        "即使出现数字和多步推理，也不追加本 Skill 的反思问题。",
+        "在主答案内指出没有依据支持缺货率减半，不把风险藏成可选追问。",
+        "不附省略提醒的解释，不制造引用或要求用户审查刚完成的审查。"
+      ]
+    },
+    {
+      "id": "quick-answer-own-checking-exclusion",
+      "prompt": "只用三句话给我一个试运行安排，我会自己核查成本和工期，不要附加提示或追问。",
+      "expected_output": "按用户要求简短回答，不附判断提醒或额外提问。",
+      "files": [],
+      "expectations": [
+        "简短要求和自行核查意图优先于可行动计划触发条件。",
+        "不在三句话之外追加 2 至 3 个问题或固定引导。",
+        "必要限制可以简洁写进主答案，不把省略提醒当作省略准确性责任。"
+      ]
+    },
+    {
+      "id": "user-material-formatting-exclusion",
+      "prompt": "把我这段会议记录排成 Markdown 待办表，只整理、不分析方案：周二完成模型迁移，周四内部试用，预算 3000 元，负责人小组 A。不要补充内容。",
+      "expected_output": "忠实将给定内容整理成表格，不把原材料中的日期和预算当作新增估算来触发提醒。",
+      "files": [],
+      "expectations": [
+        "不追加‘日期是否确定’‘预算是否准确’之类关于用户原材料的反思问题。",
+        "不虚构分析、负责人背景、证据或新任务。",
+        "不因表格属于可用工件就自动追加本 Skill 的提示。"
+      ]
+    },
+    {
+      "id": "educational-comparison-exclusion",
+      "prompt": "请解释基金和 ETF 的区别，以及风险分散是什么意思。我只是学概念，不是在选产品或决定购买。",
+      "expected_output": "完成纯教育和比较解释，不因为金融领域或可能出现历史数字而追加提醒。",
+      "files": [],
+      "expectations": [
+        "明确按理解知识而非行动建议处理，不自行推荐购买。",
+        "不追加‘我该如何验证这些风险’之类反思问题。",
+        "术语或事实的不确定性按需要在正文说明，不替换成提醒。"
+      ]
+    },
+    {
+      "id": "runnable-code-exclusion",
+      "prompt": "给我一个 Python 函数，接收整数列表并返回偶数的平方，附两个 assert 示例。我会自己运行，只要函数和示例。",
+      "expected_output": "交付函数与可运行示例，不为代码本身追加结尾判断提醒。",
+      "files": [],
+      "expectations": [
+        "不因交付了可行动工件而对可运行代码追加提醒。",
+        "不额外添加泛化核对问题、引导句或邀约。",
+        "不由提醒方法调用工具、写频次文件或委派执行。"
+      ]
+    },
+    {
+      "id": "opinion-not-authoritative-claim",
+      "prompt": "你怎么看极简主义界面的风格？我只是问你的审美看法，不准备据此决定产品方案。",
+      "expected_output": "把回答作为有边界的观点，不建议用户验证审美看法，不扩大成产品建议。",
+      "files": [],
+      "expectations": [
+        "不将‘你怎么看’自动等同重大建议或权威事实。",
+        "不在结尾追加本 Skill 的反思问题。",
+        "如果观点引用不确定事实，直接限定该事实，不靠结尾提醒修补。"
+      ]
+    },
+    {
+      "id": "creative-writing-no-checking-ritual",
+      "prompt": "给我的猫写一首四行小诗，轻松一点，不要说明创作过程。",
+      "expected_output": "只交付创作，不附核查提示、说明或后续推销。",
+      "files": [],
+      "expectations": [
+        "遵守创意写作排除条件，不强行创造可核对事实。",
+        "没有空引导、2 至 3 个反思问题或省略提醒的解释。",
+        "不追加邀请用户继续的固定尾句。"
+      ]
+    }
+  ]
+}

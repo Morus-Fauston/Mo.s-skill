@@ -1,0 +1,5 @@
+interface:
+  display_name: "Research"
+  short_description: "当前会话直接取证，交付带来源和边界的研究结论"
+policy:
+  allow_implicit_invocation: true

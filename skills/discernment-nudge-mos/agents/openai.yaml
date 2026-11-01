@@ -1,0 +1,5 @@
+interface:
+  display_name: "Discernment Nudge"
+  short_description: "按对话语言给出可选核对问题，同一对话最多提醒一次"
+policy:
+  allow_implicit_invocation: true
