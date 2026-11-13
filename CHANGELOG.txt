@@ -1,3 +1,13 @@
+v0.11.1 (2026-11-13 22:53)
+  修复: 跟随上游移除 resolving-merge-conflicts，文档和三档清单同步为 recommended 43 / all 62 / For MAT 32
+  调整: review-mat 从送审路径主动查找适用的编码、接口和测试规范
+  文档: 更新 implement-spec 的工程类状态和暂缓纳入理由，记录 pr 试用计划及 retro 按需试用
+  技术: 三个清单通过 UTF-8 JSON 解析和逐项计数，git diff --check 通过
+  [待完成] 下一次个人项目 PR 试用 pr，在实际 MAT 审阅中验证规范查找行为
+  [刻意不做] 新增上游 Skill 留待试用，旧 Skill 的本机卸载另行决定
+
+====
+
 v0.11.0 (2026-11-02 00:57)
   调整: recommended 用 research-mos 替换 research，保持 44 项（本仓库 11＋上游 33），来源读取需同时处理 localSkills 与 packages
   - 当前会话负责调查，主负责人可按既有资格使用辅助，不强制先派子代理

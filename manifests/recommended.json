@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "日常推荐来源清单：原 own 10 项、本仓库 research-mos 1 项、上游 33 项，共 44 项。仅描述来源选择，不执行安装。",
+  "description": "日常推荐来源清单：原 own 10 项、本仓库 research-mos 1 项、上游 32 项，共 43 项。仅描述来源选择，不执行安装。",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
@@ -17,7 +17,6 @@
         "implement",
         "improve-codebase-architecture",
         "prototype",
-        "resolving-merge-conflicts",
         "git-guardrails-claude-code",
         "tdd",
         "teach",

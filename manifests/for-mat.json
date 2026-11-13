@@ -445,10 +445,6 @@
     {
       "name": "git-guardrails-claude-code",
       "reason": "Claude Code 专用 Hook，不是当前 DSH 权限机制。"
-    },
-    {
-      "name": "resolving-merge-conflicts",
-      "reason": "不照搬整体暂存提交；主管协调、开发修正、提交员获准收尾。"
     }
   ],
   "notes": [

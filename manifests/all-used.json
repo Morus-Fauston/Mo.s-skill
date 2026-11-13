@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "description": "Complete upstream index: 53 upstream Skills plus 10 owned Skills. It records a curated selection rather than a mechanical merge of every available Skill directory.",
+  "description": "Complete upstream index: 52 upstream Skills plus 10 owned Skills. It records a curated selection rather than a mechanical merge of every available Skill directory.",
   "packages": [
     {
       "source": "https://github.com/mattpocock/skills",
-      "skills": ["ask-matt", "code-review", "codebase-design", "diagnosing-bugs", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "implement", "improve-codebase-architecture", "loop-me", "prototype", "research", "resolving-merge-conflicts", "git-guardrails-claude-code", "setup-matt-pocock-skills", "setup-pre-commit", "tdd", "teach", "to-spec", "to-tickets", "triage", "wayfinder", "wizard", "writing-beats", "writing-fragments", "writing-shape"]
+      "skills": ["ask-matt", "code-review", "codebase-design", "diagnosing-bugs", "domain-modeling", "grill-me", "grill-with-docs", "grilling", "handoff", "implement", "improve-codebase-architecture", "loop-me", "prototype", "research", "git-guardrails-claude-code", "setup-matt-pocock-skills", "setup-pre-commit", "tdd", "teach", "to-spec", "to-tickets", "triage", "wayfinder", "wizard", "writing-beats", "writing-fragments", "writing-shape"]
     },
     {
       "source": "https://github.com/anthropics/skills",
@@ -44,7 +44,7 @@
     {
       "name": "implement-spec",
       "source": "https://github.com/mattpocock/skills",
-      "reason": "In-progress beta Skill for driving a spec and blocking ticket graph to one PR; keep under observation until its boundary with the stable implement Skill and its multi-worktree flow mature."
+      "reason": "Upstream engineering Skill that implements a ticket dependency graph across separate worktrees and merges into one integration branch. Suitability for this project's worktree, parallel delegation, and ticket closure workflows is unverified."
     }
   ]
 }

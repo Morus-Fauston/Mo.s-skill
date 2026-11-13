@@ -99,8 +99,8 @@ MAT 专版不应复制进个人全局 Skill 目录；只向相应类型／职责
 | 范围 | 清单内容 | 入口 |
 |---|---|---|
 | `own` | 原有 10 个个人版 | [核心集](<docs/分层清单.md#own>) |
-| `recommended` | 本仓库 11 项＋上游 33 项，共 44 项；`research-mos` 已替换原 `research` | [推荐来源清单](<manifests/recommended.json>) |
-| `all` | 保留原 63 项选择，尚未同步新版替代，不是当前推荐档的严格超集 | [完整来源索引](<manifests/all-used.json>) |
+| `recommended` | 本仓库 11 项＋上游 32 项，共 43 项；`research-mos` 已替换原 `research` | [推荐来源清单](<manifests/recommended.json>) |
+| `all` | 保留原 62 项选择，尚未同步新版替代，不是当前推荐档的严格超集 | [完整来源索引](<manifests/all-used.json>) |
 | `For MAT` | 27 项类型基础方法＋5 项手动专题，共 32 项；按类型分配，不全挂给一个会话 | [完整配套与类型表](<docs/分层清单.md#for-mat>)、[来源清单](<manifests/for-mat.json>) |
 
 `For MAT` 维护明确清单，不自动跟随日常推荐的增删。`discernment-nudge-mos` 在 MAT 中仅供主管使用；日常推荐仍保留上游提醒方法，新本地化版作为可选项，未擅自替换。清单已同步不等于安装或发布完成，也不证明保留的上游方法均已完成 MAT 适配。
